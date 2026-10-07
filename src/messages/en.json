@@ -410,7 +410,7 @@
       }
     },
     "formulaTitle": "Formula",
-    "formulaBody": "Score S = (p₁ + … + p₇) / 7, where each p is 0, 25, 50, 75 or 100 and p₇ = 100 − the direct score. Improve = max(0, S − k·25/7); worsen = min(100, S + k·25/7), with k up to 2.",
+    "formulaBody": "Score S = (p1 + … + p7) / 7, where each p is 0, 25, 50, 75 or 100 and p7 = 100 − the direct score. Improve = max(0, S − k·25/7); worsen = min(100, S + k·25/7), with k up to 2.",
     "limitationsTitle": "Limits",
     "limitations": [
       "Self-reported answers vary with moment and context.",

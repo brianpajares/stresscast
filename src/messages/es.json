@@ -383,7 +383,7 @@
       "model": { "k": "Versión del modelo", "v": "{version}" }
     },
     "formulaTitle": "Fórmula",
-    "formulaBody": "Score S = (p₁ + … + p₇) / 7, donde cada p es 0, 25, 50, 75 o 100 y p₇ = 100 − la puntuación directa. Mejora = max(0, S − k·25/7); empeora = min(100, S + k·25/7), con k hasta 2.",
+    "formulaBody": "Score S = (p1 + … + p7) / 7, donde cada p es 0, 25, 50, 75 o 100 y p7 = 100 − la puntuación directa. Mejora = max(0, S − k·25/7); empeora = min(100, S + k·25/7), con k hasta 2.",
     "limitationsTitle": "Límites",
     "limitations": [
       "Las respuestas autorreportadas varían con el momento y el contexto.",

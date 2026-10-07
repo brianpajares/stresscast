@@ -26,12 +26,31 @@ if (!entry || entry.sha256 !== sha256) {
 }
 
 const base = parseModelBaseXlsx(bytes);
+
+// Artefactos de lectura "app" embebidos como último valor válido (se verifican contra el manifiesto).
+function readVerified(file: string, relative: string): Buffer {
+  const buf = readFileSync(resolve(root, "drive", relative));
+  const expected = manifest.files.find((f) => f.file === file)?.sha256;
+  const actual = createHash("sha256").update(buf).digest("hex");
+  if (!expected || expected !== actual) {
+    console.error(`Checksum de ${file} no coincide con spec/drive_manifest.json.`);
+    process.exit(1);
+  }
+  return buf;
+}
+
 const snapshot = {
   source: "drive/base/base_stresscast.xlsx",
   source_sha256: sha256,
   data_version: entry.version,
   manifest_version: manifest.manifest_version,
   base,
+  artifacts: {
+    model_card: readVerified("model_card.md", "docs/model_card.md").toString("utf8"),
+    report_template: JSON.parse(readVerified("report_template.json", "templates/report_template.json").toString("utf8")),
+    engine_config: JSON.parse(readVerified("engine_config.json", "model/engine_config.json").toString("utf8")),
+    inputs_schema: JSON.parse(readVerified("inputs.schema.json", "model/inputs.schema.json").toString("utf8")),
+  },
 };
 writeFileSync(resolve(root, "src/engine/bundled-base.json"), `${JSON.stringify(snapshot, null, 2)}\n`);
 console.log(`bundled-base.json OK · data_version=${entry.version} · sha256=${sha256.slice(0, 12)}…`);

@@ -243,3 +243,23 @@
     color: #000;
   }
 }
+
+/* Barra de score (CurrentScoreViz): relleno y marcador animan desde 0; reduced-motion => instantáneo. */
+.sc-bar-fill {
+  width: calc(var(--score, 0) * 1%);
+  animation: sc-fill 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.sc-bar-marker {
+  left: calc(var(--score, 0) * 1%);
+  animation: sc-move 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes sc-fill {
+  from {
+    width: 0;
+  }
+}
+@keyframes sc-move {
+  from {
+    left: 0;
+  }
+}

@@ -11,6 +11,12 @@ export interface BundledSnapshot {
   data_version: string;
   manifest_version: string;
   base: ModelBase;
+  artifacts: {
+    model_card: string;
+    report_template: unknown;
+    engine_config: { model_id: string; version: string; [k: string]: unknown };
+    inputs_schema: unknown;
+  };
 }
 
 export const bundledSnapshot = snapshot as unknown as BundledSnapshot;

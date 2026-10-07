@@ -383,7 +383,7 @@
       "model": { "k": "Versão do modelo", "v": "{version}" }
     },
     "formulaTitle": "Fórmula",
-    "formulaBody": "Pontuação S = (p₁ + … + p₇) / 7, onde cada p é 0, 25, 50, 75 ou 100 e p₇ = 100 − a pontuação direta. Melhora = max(0, S − k·25/7); piora = min(100, S + k·25/7), com k até 2.",
+    "formulaBody": "Pontuação S = (p1 + … + p7) / 7, onde cada p é 0, 25, 50, 75 ou 100 e p7 = 100 − a pontuação direta. Melhora = max(0, S − k·25/7); piora = min(100, S + k·25/7), com k até 2.",
     "limitationsTitle": "Limites",
     "limitations": [
       "Respostas autorrelatadas variam conforme o momento e o contexto.",

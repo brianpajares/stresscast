@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      "@spec": fileURLToPath(new URL("./spec", import.meta.url)),
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       // `server-only` lanza fuera de Server Components; en tests unitarios es inocuo.
       "server-only": fileURLToPath(new URL("./tests/helpers/server-only-stub.ts", import.meta.url)),
