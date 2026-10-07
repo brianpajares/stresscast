@@ -1,0 +1,192 @@
+{
+  "version": "1.0.0",
+  "principles": [
+    "calma sin medicalizar",
+    "evidencia visible",
+    "una decisión por pantalla",
+    "incertidumbre explícita",
+    "sin dark patterns"
+  ],
+  "colors": {
+    "light": {
+      "bg": "#F8FAFC",
+      "surface": "#FFFFFF",
+      "surface_alt": "#F1F5F9",
+      "text": "#0F172A",
+      "text_muted": "#475569",
+      "border": "#CBD5E1",
+      "primary": "#0F766E",
+      "primary_hover": "#115E59",
+      "primary_text": "#FFFFFF",
+      "success": "#166534",
+      "warning": "#B45309",
+      "danger": "#B42318",
+      "focus": "#2563EB",
+      "chart_current": "#0F766E",
+      "chart_reference": "#64748B",
+      "chart_improve": "#047857",
+      "chart_worsen": "#B45309"
+    },
+    "dark": {
+      "bg": "#0B1220",
+      "surface": "#111827",
+      "surface_alt": "#1E293B",
+      "text": "#F8FAFC",
+      "text_muted": "#CBD5E1",
+      "border": "#475569",
+      "primary": "#5EEAD4",
+      "primary_hover": "#99F6E4",
+      "primary_text": "#042F2E",
+      "success": "#86EFAC",
+      "warning": "#FCD34D",
+      "danger": "#FCA5A5",
+      "focus": "#93C5FD",
+      "chart_current": "#5EEAD4",
+      "chart_reference": "#CBD5E1",
+      "chart_improve": "#86EFAC",
+      "chart_worsen": "#FCD34D"
+    }
+  },
+  "contrast_checks": [
+    {
+      "foreground": "#0F172A",
+      "background": "#FFFFFF",
+      "ratio": 17.85,
+      "aa_normal": true
+    },
+    {
+      "foreground": "#475569",
+      "background": "#FFFFFF",
+      "ratio": 7.58,
+      "aa_normal": true
+    },
+    {
+      "foreground": "#FFFFFF",
+      "background": "#0F766E",
+      "ratio": 5.47,
+      "aa_normal": true
+    },
+    {
+      "foreground": "#FFFFFF",
+      "background": "#115E59",
+      "ratio": 7.58,
+      "aa_normal": true
+    },
+    {
+      "foreground": "#FFFFFF",
+      "background": "#B45309",
+      "ratio": 5.02,
+      "aa_normal": true
+    },
+    {
+      "foreground": "#FFFFFF",
+      "background": "#B42318",
+      "ratio": 6.57,
+      "aa_normal": true
+    },
+    {
+      "foreground": "#F8FAFC",
+      "background": "#0B1220",
+      "ratio": 17.89,
+      "aa_normal": true
+    },
+    {
+      "foreground": "#CBD5E1",
+      "background": "#0B1220",
+      "ratio": 12.61,
+      "aa_normal": true
+    },
+    {
+      "foreground": "#042F2E",
+      "background": "#5EEAD4",
+      "ratio": 9.78,
+      "aa_normal": true
+    }
+  ],
+  "typography": {
+    "font_stack": "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    "fallback_note": "Prototype uses system fonts only; production may self-host an approved font.",
+    "scale": {
+      "xs": 12,
+      "sm": 14,
+      "base": 16,
+      "lg": 18,
+      "xl": 20,
+      "2xl": 24,
+      "3xl": 30,
+      "4xl": 36,
+      "5xl": 48
+    },
+    "line_height": {
+      "tight": 1.2,
+      "normal": 1.5,
+      "relaxed": 1.65
+    },
+    "weights": {
+      "regular": 400,
+      "medium": 500,
+      "semibold": 600,
+      "bold": 700
+    }
+  },
+  "spacing": {
+    "unit": 4,
+    "scale": {
+      "0": 0,
+      "1": 4,
+      "2": 8,
+      "3": 12,
+      "4": 16,
+      "5": 20,
+      "6": 24,
+      "8": 32,
+      "10": 40,
+      "12": 48,
+      "16": 64,
+      "20": 80
+    }
+  },
+  "radii": {
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "pill": 999
+  },
+  "shadows": {
+    "sm": "0 1px 2px rgba(15,23,42,.06)",
+    "md": "0 8px 24px rgba(15,23,42,.10)",
+    "focus": "0 0 0 3px rgba(37,99,235,.35)"
+  },
+  "motion": {
+    "fast_ms": 120,
+    "normal_ms": 180,
+    "slow_ms": 280,
+    "reduced_motion": "disable nonessential animation and use instant state changes"
+  },
+  "layout": {
+    "max_content_px": 1120,
+    "max_form_px": 640,
+    "gutter_360": 16,
+    "gutter_768": 24,
+    "gutter_1280": 32
+  },
+  "breakpoints": {
+    "mobile": 360,
+    "tablet": 768,
+    "desktop": 1280
+  },
+  "touch": {
+    "minimum_target_px": 44,
+    "minimum_gap_px": 8
+  },
+  "charts": {
+    "rules": [
+      "Never encode meaning by color alone; pair color with labels, icons or line patterns.",
+      "The free preview has no time axis.",
+      "Scenario charts label all three paths as conditional what-if outcomes.",
+      "Show the PUMA reference as contextual, not diagnostic.",
+      "Never imply a confidence interval; call the envelope sensitivity/scenario range."
+    ]
+  }
+}

@@ -1,0 +1,578 @@
+openapi: 3.1.0
+info:
+  title: StressCast API
+  version: 1.0.0
+  description: API del MVP StressCast. Los escenarios 30d son what-if, no predicciones.
+servers:
+  - url: https://example.invalid
+    description: Reemplazar por NEXT_PUBLIC_APP_URL en deployment
+tags:
+  - name: public
+  - name: reports
+  - name: admin
+  - name: stripe
+  - name: ops
+paths:
+  /api/calculate:
+    post:
+      tags: [public]
+      operationId: calculate
+      summary: Calcula score CBI y resultados estructurados.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssessmentInput'
+      responses:
+        '200':
+          description: Resultado válido.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculationResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /api/report-requests:
+    post:
+      tags: [reports]
+      operationId: createReportRequest
+      summary: Crea un lead y prepara el informe.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportRequestInput'
+      responses:
+        '201':
+          description: Solicitud aceptada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportRequestCreated'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          description: Conflicto de idempotencia.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /api/reports/{id}:
+    get:
+      tags: [reports]
+      operationId: getReport
+      summary: Obtiene un informe privado.
+      parameters:
+        - $ref: '#/components/parameters/ReportId'
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 32
+      responses:
+        '200':
+          description: Informe.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportView'
+        '401':
+          description: Token inválido o expirado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No encontrado.
+
+  /api/reports/{id}/pdf:
+    get:
+      tags: [reports]
+      operationId: getReportPdf
+      summary: Descarga el PDF privado.
+      parameters:
+        - $ref: '#/components/parameters/ReportId'
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+            minLength: 32
+      responses:
+        '200':
+          description: PDF.
+          content:
+            application/pdf:
+              schema:
+                type: string
+                contentMediaType: application/pdf
+                contentEncoding: binary
+        '401':
+          description: Token inválido o expirado.
+        '404':
+          description: No encontrado.
+
+  /api/privacy/requests:
+    post:
+      tags: [reports]
+      operationId: createPrivacyRequest
+      summary: Inicia solicitud de acceso/eliminación del titular.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [email, request_type]
+              properties:
+                email:
+                  type: string
+                  format: email
+                request_type:
+                  type: string
+                  enum: [access, deletion, rectification]
+      responses:
+        '202':
+          description: Solicitud iniciada; requiere verificación de identidad.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+
+  /api/admin/leads:
+    get:
+      tags: [admin]
+      operationId: listLeads
+      summary: Lista leads para admin autenticado.
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: cursor
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lista paginada.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [items]
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AdminLead'
+                  next_cursor:
+                    type: [string, 'null']
+        '401':
+          description: No autenticado.
+        '403':
+          description: No autorizado.
+
+  /api/admin/leads/{id}/resend:
+    post:
+      tags: [admin]
+      operationId: resendReport
+      summary: Reenvía entrega de informe.
+      parameters:
+        - $ref: '#/components/parameters/LeadId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+      responses:
+        '202':
+          description: Reenvío aceptado.
+        '401':
+          description: No autenticado.
+        '403':
+          description: No autorizado.
+        '404':
+          description: Lead no encontrado.
+        '409':
+          description: Idempotency conflict.
+
+  /api/stripe/checkout:
+    post:
+      tags: [stripe]
+      operationId: createCheckout
+      summary: Crea Checkout Session si Stripe está habilitado.
+      parameters:
+        - $ref: '#/components/parameters/IdempotencyKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [calculation_id, email, country]
+              properties:
+                calculation_id:
+                  type: string
+                  format: uuid
+                email:
+                  type: string
+                  format: email
+                country:
+                  $ref: '#/components/schemas/Country'
+      responses:
+        '201':
+          description: Checkout creado.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [checkout_url]
+                properties:
+                  checkout_url:
+                    type: string
+                    format: uri
+        '404':
+          description: Feature deshabilitada.
+        '409':
+          description: Conflicto de idempotencia.
+
+  /api/stripe/webhook:
+    post:
+      tags: [stripe]
+      operationId: stripeWebhook
+      summary: Procesa webhook Stripe firmado e idempotente.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Evento procesado o ya procesado.
+        '400':
+          description: Firma inválida o payload inválido.
+
+  /api/health:
+    get:
+      tags: [ops]
+      operationId: health
+      summary: Health check sin datos sensibles.
+      responses:
+        '200':
+          description: Estado del servicio.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status, app_version]
+                properties:
+                  status:
+                    type: string
+                    enum: [ok, degraded]
+                  app_version:
+                    type: string
+                  model_version:
+                    type: string
+                  drive_cache:
+                    type: string
+                    enum: [fresh, stale_valid, unavailable]
+
+components:
+  parameters:
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema:
+        type: string
+        minLength: 16
+        maxLength: 128
+    ReportId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    LeadId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  responses:
+    BadRequest:
+      description: Request inválido.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    TooManyRequests:
+      description: Rate limit.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Error interno sin detalles sensibles.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    Country:
+      type: string
+      enum: [US, GB, CA, AU, BR, MX, ES]
+    DegreeResponse:
+      type: string
+      enum: [very_low, low, somewhat, high, very_high]
+    FrequencyResponse:
+      type: string
+      enum: [never, seldom, sometimes, often, always]
+
+    AssessmentInput:
+      type: object
+      additionalProperties: false
+      required:
+        - country
+        - emotionally_exhausting
+        - burned_out_due_work
+        - work_frustrates
+        - worn_out_end_day
+        - exhausted_morning
+        - every_working_hour_tiring
+        - energy_family_friends
+      properties:
+        country:
+          $ref: '#/components/schemas/Country'
+        emotionally_exhausting:
+          $ref: '#/components/schemas/DegreeResponse'
+        burned_out_due_work:
+          $ref: '#/components/schemas/DegreeResponse'
+        work_frustrates:
+          $ref: '#/components/schemas/DegreeResponse'
+        worn_out_end_day:
+          $ref: '#/components/schemas/FrequencyResponse'
+        exhausted_morning:
+          $ref: '#/components/schemas/FrequencyResponse'
+        every_working_hour_tiring:
+          $ref: '#/components/schemas/FrequencyResponse'
+        energy_family_friends:
+          $ref: '#/components/schemas/FrequencyResponse'
+
+    Scenario:
+      type: object
+      required: [improve, no_change, worsen, k_improve, k_worsen, interpretation]
+      properties:
+        improve: {type: number, minimum: 0, maximum: 100}
+        no_change: {type: number, minimum: 0, maximum: 100}
+        worsen: {type: number, minimum: 0, maximum: 100}
+        k_improve: {type: integer, minimum: 0, maximum: 2}
+        k_worsen: {type: integer, minimum: 0, maximum: 2}
+        interpretation:
+          type: string
+          const: scenario_envelope_not_statistical_ci
+
+    ItemScore:
+      type: object
+      required: [item_id, input_key, order, response, direct_points, burden_points, reverse_scored]
+      properties:
+        item_id: {type: string}
+        input_key: {type: string}
+        order: {type: integer}
+        response: {type: string}
+        direct_points: {type: number}
+        burden_points: {type: number}
+        reverse_scored: {type: boolean}
+
+    Driver:
+      type: object
+      required: [rank, item_id, input_key, burden_points]
+      properties:
+        rank: {type: integer, minimum: 1, maximum: 3}
+        item_id: {type: string}
+        input_key: {type: string}
+        burden_points: {type: number}
+
+    CalculationResult:
+      type: object
+      required:
+        - model_id
+        - model_version
+        - score
+        - reference_band
+        - reference_cutoff
+        - scenario_30d
+        - sensitivity
+        - benchmark
+        - item_scores
+        - top_drivers
+        - localized_price
+        - warnings
+      properties:
+        model_id:
+          type: string
+          const: stresscast_cbi_work_scenario_v1
+        model_version:
+          type: string
+        score:
+          type: number
+          minimum: 0
+          maximum: 100
+        reference_band:
+          type: string
+          enum: [below_high_reference, high_reference]
+        reference_cutoff:
+          type: number
+        scenario_30d:
+          $ref: '#/components/schemas/Scenario'
+        sensitivity:
+          type: object
+          required: [one_item_one_category_points, two_items_one_category_points]
+          properties:
+            one_item_one_category_points: {type: number}
+            two_items_one_category_points: {type: number}
+        benchmark:
+          type: object
+          required: [puma_work_mean, delta_vs_puma_mean, population_note]
+          properties:
+            puma_work_mean: {type: number}
+            delta_vs_puma_mean: {type: number}
+            population_note: {type: string}
+        item_scores:
+          type: array
+          minItems: 7
+          maxItems: 7
+          items:
+            $ref: '#/components/schemas/ItemScore'
+        top_drivers:
+          type: array
+          minItems: 3
+          maxItems: 3
+          items:
+            $ref: '#/components/schemas/Driver'
+        localized_price:
+          type: object
+          required: [country, currency, recommended_price, price_status]
+          properties:
+            country:
+              $ref: '#/components/schemas/Country'
+            currency: {type: string}
+            recommended_price: {type: number}
+            price_status: {type: string}
+        warnings:
+          type: array
+          items: {type: string}
+
+    ReportRequestInput:
+      type: object
+      additionalProperties: false
+      required:
+        - email
+        - explicit_report_consent
+        - marketing_opt_in
+        - calculation
+        - turnstile_token
+        - locale
+      properties:
+        email:
+          type: string
+          format: email
+        explicit_report_consent:
+          type: boolean
+          const: true
+        marketing_opt_in:
+          type: boolean
+        calculation:
+          type: object
+          required: [inputs, result]
+          properties:
+            inputs:
+              $ref: '#/components/schemas/AssessmentInput'
+            result:
+              $ref: '#/components/schemas/CalculationResult'
+        turnstile_token:
+          type: string
+          minLength: 1
+        locale:
+          type: string
+          enum: [es, en, pt]
+
+    ReportRequestCreated:
+      type: object
+      required: [request_id, status]
+      properties:
+        request_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [accepted, preparing, delivered]
+        report_url:
+          type: [string, 'null']
+          format: uri
+
+    ReportView:
+      type: object
+      required: [id, result, locale, app_version, model_version]
+      properties:
+        id:
+          type: string
+          format: uuid
+        result:
+          $ref: '#/components/schemas/CalculationResult'
+        locale:
+          type: string
+          enum: [es, en, pt]
+        app_version:
+          type: string
+        model_version:
+          type: string
+
+    AdminLead:
+      type: object
+      required: [id, email, status, created_at]
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        last_delivery_status:
+          type: [string, 'null']
+
+    Error:
+      type: object
+      required: [code, message, request_id]
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string

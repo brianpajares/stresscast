@@ -1,0 +1,148 @@
+{
+  "version": "1.2.0",
+  "principle": "La vista gratis demuestra valor con el score actual sin simular una trayectoria temporal. Los escenarios what-if completos, sensibilidad y benchmark detallado quedan detrás del informe.",
+  "outputs": [
+    {
+      "id": "work_burnout_score",
+      "origin": "media CBI work-related 7 ítems",
+      "unit": "points 0-100",
+      "format": "1 decimal",
+      "access": "GRATIS",
+      "primary": true
+    },
+    {
+      "id": "reference_band",
+      "origin": "cutoff PUMA >=50",
+      "unit": "categorical",
+      "format": "below_high_reference | high_reference",
+      "access": "GRATIS"
+    },
+    {
+      "id": "mini_chart",
+      "origin": "score actual + referencia contextual; sin endpoint temporal",
+      "unit": "points",
+      "format": "marcador/barra horizontal del score actual con referencia; nunca línea temporal",
+      "access": "GRATIS",
+      "claim_guardrail": "No usar eje de tiempo ni conectar el score actual a un punto '30d'."
+    },
+    {
+      "id": "top_driver_1",
+      "origin": "ítem CBI con mayor burden score",
+      "unit": "item + points",
+      "format": "texto breve",
+      "access": "GRATIS"
+    },
+    {
+      "id": "one_generic_action",
+      "origin": "regla narrativa genérica ligada al driver principal; no modifica score",
+      "unit": "action",
+      "format": "texto breve",
+      "access": "GRATIS",
+      "claim_guardrail": "No prometer efecto causal, clínico ni reducción garantizada del score."
+    },
+    {
+      "id": "scenario_no_change_30d",
+      "origin": "motor de escenario",
+      "unit": "points",
+      "format": "1 decimal",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "scenario_improve_30d",
+      "origin": "dos ítems elegibles mejoran una categoría",
+      "unit": "points",
+      "format": "1 decimal",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "scenario_worsen_30d",
+      "origin": "dos ítems elegibles empeoran una categoría",
+      "unit": "points",
+      "format": "1 decimal",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "scenario_envelope",
+      "origin": "min/max de escenarios",
+      "unit": "points",
+      "format": "rango",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "top_drivers_3",
+      "origin": "ranking de 7 ítems por burden score",
+      "unit": "items",
+      "format": "3 filas",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "sensitivity",
+      "origin": "25/7 por ítem/categoría",
+      "unit": "points",
+      "format": "3.6 puntos por paso",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "puma_comparison",
+      "origin": "score - media PUMA 33.0; referencia >=50",
+      "unit": "points",
+      "format": "diferencia + nota de población",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "action_plan_7d",
+      "origin": "reglas por drivers; narrativa no numérica",
+      "unit": "plan",
+      "format": "3 acciones + seguimiento",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "methodology",
+      "origin": "model_spec + fuentes",
+      "unit": "document",
+      "format": "sección explicativa",
+      "access": "INFORME_COMPLETO"
+    },
+    {
+      "id": "weekly_tracking",
+      "origin": "repetición del mismo score",
+      "unit": "time series",
+      "format": "historial",
+      "access": "SUSCRIPCION",
+      "enabled_when": "recurrence_proven"
+    }
+  ],
+  "free_preview": {
+    "give": [
+      "work_burnout_score",
+      "reference_band",
+      "mini_chart",
+      "top_driver_1",
+      "one_generic_action"
+    ],
+    "do_not_give": [
+      "los dos escenarios alternativos",
+      "top 3 drivers completos",
+      "sensibilidad cuantificada",
+      "comparación PUMA detallada",
+      "plan de 7 días",
+      "metodología expandida"
+    ],
+    "why": "La preview responde 'dónde estoy ahora' y demuestra cálculo real; el informe solicitado en fase 1 (y potencialmente pagado en fase 2) explica qué lo mueve y cómo cambian los escenarios condicionales.",
+    "locked_teaser": {
+      "show": "Tarjeta de escenarios con estructura visible y valores alternativos bloqueados",
+      "copy_rule": "Debe decir 'what-if/escenario condicional', nunca 'pronóstico', 'predicción' o 'probabilidad'."
+    }
+  },
+  "subscription": {
+    "status": "conditional",
+    "only_if": "al menos 25% de compradores realiza un segundo check-in dentro de 45 días o existe demanda explícita equivalente",
+    "features": [
+      "historial semanal",
+      "alerta de cambio >=10 puntos entre mediciones",
+      "recalculo periódico",
+      "comparación contra su propia línea base"
+    ],
+    "note": "El umbral de 10 puntos es una regla de producto para alertas, no una diferencia clínica mínima."
+  }
+}

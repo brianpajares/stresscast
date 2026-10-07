@@ -1,0 +1,277 @@
+{
+  "version": "1.0.0",
+  "principles": [
+    "No enviar respuestas CBI, score, banda, email ni contenido del PDF a analytics de terceros.",
+    "Usar session_id pseudónimo de corta vida; user_id persistente solo si existe base legal/consentimiento y necesidad real.",
+    "country_code puede usarse como dimensión de mercado solo en first-party analytics; para terceros preferir locale/deployment market agregado.",
+    "Todos los eventos incluyen app_version y model_version cuando aplique."
+  ],
+  "common_properties": {
+    "session_id": "pseudonymous_ephemeral",
+    "language": "en|es|pt-br",
+    "market": "US|GB|CA|AU|BR|MX|ES; first-party only",
+    "app_version": "string",
+    "model_version": "string|null",
+    "viewport_bucket": "360|768|1280+",
+    "consent_analytics": "boolean"
+  },
+  "forbidden_properties": [
+    "answer_value",
+    "email",
+    "email_domain",
+    "score",
+    "reference_band",
+    "item_scores",
+    "top_driver_value",
+    "pdf_url",
+    "report_contents",
+    "free_text"
+  ],
+  "events": [
+    {
+      "name": "landing_view",
+      "when": "landing rendered",
+      "properties": [],
+      "purpose": "traffic denominator"
+    },
+    {
+      "name": "assessment_start_click",
+      "when": "primary CTA clicked",
+      "properties": [],
+      "purpose": "visit_to_start"
+    },
+    {
+      "name": "assessment_step_view",
+      "when": "step visible",
+      "properties": [
+        "step_index",
+        "question_id"
+      ],
+      "purpose": "drop-off by step"
+    },
+    {
+      "name": "assessment_step_complete",
+      "when": "valid response selected and continue",
+      "properties": [
+        "step_index",
+        "question_id",
+        "elapsed_bucket"
+      ],
+      "purpose": "completion/friction; no answer value"
+    },
+    {
+      "name": "validation_error",
+      "when": "client/server validation blocks",
+      "properties": [
+        "screen_id",
+        "field_id",
+        "error_code"
+      ],
+      "purpose": "UX QA"
+    },
+    {
+      "name": "assessment_complete",
+      "when": "8/8 accepted",
+      "properties": [
+        "elapsed_bucket"
+      ],
+      "purpose": "start_to_preview denominator"
+    },
+    {
+      "name": "calculation_success",
+      "when": "engine returns valid output",
+      "properties": [
+        "engine_latency_bucket"
+      ],
+      "purpose": "reliability"
+    },
+    {
+      "name": "calculation_error",
+      "when": "engine rejects/fails unexpectedly",
+      "properties": [
+        "error_code",
+        "schema_version"
+      ],
+      "purpose": "reliability alert"
+    },
+    {
+      "name": "preview_view",
+      "when": "preview rendered",
+      "properties": [],
+      "purpose": "start_to_preview numerator"
+    },
+    {
+      "name": "methodology_open",
+      "when": "methodology expanded/opened",
+      "properties": [
+        "origin_screen"
+      ],
+      "purpose": "trust engagement"
+    },
+    {
+      "name": "source_open",
+      "when": "source link clicked",
+      "properties": [
+        "source_id",
+        "origin_screen"
+      ],
+      "purpose": "trust engagement"
+    },
+    {
+      "name": "report_request_click",
+      "when": "preview CTA clicked",
+      "properties": [],
+      "purpose": "preview_to_request intent"
+    },
+    {
+      "name": "report_request_view",
+      "when": "email gate rendered",
+      "properties": [],
+      "purpose": "form denominator"
+    },
+    {
+      "name": "report_request_submit",
+      "when": "valid email gate submitted",
+      "properties": [
+        "marketing_opt_in"
+      ],
+      "purpose": "delivery funnel; email excluded"
+    },
+    {
+      "name": "report_request_success",
+      "when": "delivery accepted",
+      "properties": [
+        "delivery_channel"
+      ],
+      "purpose": "preview_to_report_request numerator"
+    },
+    {
+      "name": "report_request_error",
+      "when": "delivery fails",
+      "properties": [
+        "error_code"
+      ],
+      "purpose": "ops"
+    },
+    {
+      "name": "report_success_view",
+      "when": "success screen visible",
+      "properties": [],
+      "purpose": "completion"
+    },
+    {
+      "name": "report_open_click",
+      "when": "user opens report",
+      "properties": [],
+      "purpose": "report engagement"
+    },
+    {
+      "name": "report_view",
+      "when": "private report rendered",
+      "properties": [
+        "report_age_bucket"
+      ],
+      "purpose": "report engagement"
+    },
+    {
+      "name": "report_section_expand",
+      "when": "method/source section expands",
+      "properties": [
+        "section_id"
+      ],
+      "purpose": "content engagement"
+    },
+    {
+      "name": "pdf_download",
+      "when": "PDF download requested",
+      "properties": [],
+      "purpose": "report utility"
+    },
+    {
+      "name": "language_change",
+      "when": "user changes language",
+      "properties": [
+        "from_language",
+        "to_language"
+      ],
+      "purpose": "i18n UX"
+    },
+    {
+      "name": "checkout_view",
+      "when": "phase2 checkout rendered",
+      "properties": [
+        "price_bucket",
+        "currency"
+      ],
+      "purpose": "future payment denominator",
+      "enabled_when": "payment_enabled=true"
+    },
+    {
+      "name": "payment_attempt",
+      "when": "provider flow begins",
+      "properties": [
+        "currency"
+      ],
+      "purpose": "future payment",
+      "enabled_when": "payment_enabled=true"
+    },
+    {
+      "name": "payment_success",
+      "when": "provider confirms",
+      "properties": [
+        "currency",
+        "price_bucket"
+      ],
+      "purpose": "future payment conversion",
+      "enabled_when": "payment_enabled=true"
+    },
+    {
+      "name": "payment_failure",
+      "when": "provider declines/errors",
+      "properties": [
+        "error_class"
+      ],
+      "purpose": "future payment ops",
+      "enabled_when": "payment_enabled=true"
+    }
+  ],
+  "derived_metrics": [
+    {
+      "name": "visit_to_start",
+      "formula": "assessment_start_click / landing_view"
+    },
+    {
+      "name": "start_to_preview",
+      "formula": "preview_view / assessment_start_click"
+    },
+    {
+      "name": "preview_to_report_request",
+      "formula": "report_request_success / preview_view"
+    },
+    {
+      "name": "median_time_to_preview",
+      "formula": "median elapsed from assessment_start_click to preview_view"
+    },
+    {
+      "name": "calculation_error_rate",
+      "formula": "calculation_error / (calculation_error + calculation_success)"
+    }
+  ],
+  "alerts": [
+    {
+      "metric": "calculation_error_rate",
+      "threshold": ">1% over 15 min with >=50 calculations",
+      "severity": "critical"
+    },
+    {
+      "metric": "report_request_error_rate",
+      "threshold": ">5% over 30 min with >=20 submissions",
+      "severity": "major"
+    },
+    {
+      "metric": "unexpected_model_version",
+      "threshold": ">0",
+      "severity": "critical"
+    }
+  ]
+}

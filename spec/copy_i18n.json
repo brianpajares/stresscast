@@ -1,0 +1,315 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "app_name": {
+      "es": "StressCast",
+      "en": "StressCast",
+      "pt": "StressCast"
+    },
+    "translation_status": {
+      "en": "source/original CBI wording basis",
+      "es": "preliminar hasta cotejo final con versión validada",
+      "pt": "preliminar hasta cotejo final con versión validada PT-BR"
+    }
+  },
+  "es": {
+    "tagline": "Mide tu carga laboral. Explora qué podría cambiar.",
+    "landing": {
+      "eyebrow": "Chequeo de burnout laboral · ~60–90 s",
+      "headline": "Entiende cuánto agotamiento laboral estás acumulando ahora.",
+      "body": "Responde 7 preguntas del Copenhagen Burnout Inventory. Obtendrás un score actual de 0–100, una referencia contextual y un informe con escenarios condicionales. No es un diagnóstico ni una predicción.",
+      "cta": "Empezar mi chequeo",
+      "trust": "Cálculo auditable · 7 ítems CBI · Sin biometría · Sin datos personales antes del informe"
+    },
+    "country": {
+      "title": "¿Dónde trabajas principalmente?",
+      "help": "Solo ajusta idioma, moneda y notas de evidencia. No cambia tu score.",
+      "cta": "Continuar"
+    },
+    "questions": {
+      "emotionally_exhausting": "¿En qué grado tu trabajo resulta emocionalmente agotador?",
+      "burned_out_due_work": "¿En qué grado te sientes quemado/a a causa del trabajo?",
+      "work_frustrates": "¿En qué grado tu trabajo te frustra?",
+      "worn_out_end_day": "¿Con qué frecuencia terminas agotado/a al final de la jornada?",
+      "exhausted_morning": "¿Con qué frecuencia amaneces agotado/a al pensar en otro día de trabajo?",
+      "every_working_hour_tiring": "¿Con qué frecuencia sientes que cada hora de trabajo es agotadora?",
+      "energy_family_friends": "¿Con qué frecuencia tienes suficiente energía para familia y amigos durante el tiempo libre?"
+    },
+    "degree": {
+      "very_low": "En muy bajo grado",
+      "low": "En bajo grado",
+      "somewhat": "Algo",
+      "high": "En alto grado",
+      "very_high": "En muy alto grado"
+    },
+    "frequency": {
+      "never": "Nunca / casi nunca",
+      "seldom": "Rara vez",
+      "sometimes": "A veces",
+      "often": "A menudo",
+      "always": "Siempre / casi siempre"
+    },
+    "assessment": {
+      "progress": "Pregunta {current} de 8",
+      "back": "Atrás",
+      "next": "Continuar",
+      "required": "Elige una opción para continuar.",
+      "privacy": "Tus respuestas no se envían a analítica de terceros."
+    },
+    "processing": {
+      "title": "Calculando tu score",
+      "steps": [
+        "Aplicando la escala CBI",
+        "Comparando con la referencia PUMA",
+        "Preparando tu vista previa"
+      ],
+      "note": "El cálculo es determinista; no usamos IA generativa para producir la cifra."
+    },
+    "preview": {
+      "eyebrow": "Tu resultado actual",
+      "score_label": "Burnout relacionado con el trabajo",
+      "above": "Tu score está en o por encima del umbral de referencia PUMA de 50.",
+      "below": "Tu score está por debajo del umbral de referencia PUMA de 50.",
+      "context": "PUMA: trabajadores de servicios humanos en Dinamarca. Referencia contextual, no norma global ni diagnóstico.",
+      "driver": "Tu driver más alto ahora",
+      "action": "Una acción para esta semana",
+      "action_body": "Elige un cambio pequeño y observable relacionado con tu driver principal y repite el chequeo después; no interpretes una sola medición como destino.",
+      "locked_title": "Qué podría cambiar si cambian tus respuestas",
+      "locked_body": "El informe muestra escenarios condicionales de mejora / sin cambio / empeora. Son what-if matemáticos, no predicciones.",
+      "cta": "Recibir mi informe completo"
+    },
+    "request": {
+      "title": "Recibe el informe completo gratis",
+      "body": "Te enviaremos escenarios what-if, top 3 drivers, benchmark contextual, plan de 7 días y metodología.",
+      "email": "Email",
+      "email_placeholder": "tu@email.com",
+      "consent": "Acepto usar mi email para generar y entregar este informe.",
+      "marketing": "Quiero recibir novedades de StressCast. Opcional.",
+      "privacy": "En la fase de validación, una copia de tus respuestas, resultado y PDF se envía al operador de StressCast para revisar y completar manualmente la entrega. No se usa para decisiones laborales ni analítica de terceros.",
+      "cta": "Enviar mi informe",
+      "invalid_email": "Introduce un email válido.",
+      "consent_required": "Necesitamos tu consentimiento de entrega para enviarte el informe."
+    },
+    "success": {
+      "title": "Informe preparado",
+      "body": "En producción, recibirías un enlace privado por email. En este prototipo puedes abrirlo aquí.",
+      "cta": "Ver informe demo"
+    },
+    "report": {
+      "title": "Tu informe StressCast",
+      "current": "Score actual",
+      "scenarios": "Escenarios condicionales a 30 días",
+      "scenario_note": "Si hasta dos drivers cambian una categoría. No representa probabilidad, pronóstico ni intervalo de confianza.",
+      "drivers": "Top 3 drivers",
+      "benchmark": "Referencia contextual",
+      "plan": "Plan de 7 días",
+      "method": "Metodología y supuestos",
+      "download": "Descargar PDF",
+      "id": "ID de verificación"
+    },
+    "legal": {
+      "disclaimer": "StressCast es una herramienta de reflexión sobre bienestar laboral. No diagnostica, trata ni sustituye a un profesional cualificado. No debe usarse para tomar decisiones laborales sobre otra persona.",
+      "support": "Si el malestar es intenso, persistente o afecta tu seguridad o funcionamiento diario, busca apoyo profesional apropiado en tu país."
+    }
+  },
+  "en": {
+    "tagline": "Measure your work burnout. Explore what could change.",
+    "landing": {
+      "eyebrow": "Work-burnout check · ~60–90 sec",
+      "headline": "See how much work-related exhaustion you are carrying right now.",
+      "body": "Answer 7 Copenhagen Burnout Inventory questions. You’ll get a current 0–100 score, contextual reference and a report with conditional scenarios. It is not a diagnosis or a prediction.",
+      "cta": "Start my check",
+      "trust": "Auditable calculation · 7 CBI items · No biometrics · No personal data before the report"
+    },
+    "country": {
+      "title": "Where do you mainly work?",
+      "help": "This only adjusts language, currency and evidence notes. It does not change your score.",
+      "cta": "Continue"
+    },
+    "questions": {
+      "emotionally_exhausting": "To what degree is your work emotionally exhausting?",
+      "burned_out_due_work": "To what degree do you feel burned out because of your work?",
+      "work_frustrates": "To what degree does your work frustrate you?",
+      "worn_out_end_day": "How often do you feel worn out at the end of the working day?",
+      "exhausted_morning": "How often are you exhausted in the morning at the thought of another day at work?",
+      "every_working_hour_tiring": "How often do you feel that every working hour is tiring for you?",
+      "energy_family_friends": "How often do you have enough energy for family and friends during leisure time?"
+    },
+    "degree": {
+      "very_low": "To a very low degree",
+      "low": "To a low degree",
+      "somewhat": "Somewhat",
+      "high": "To a high degree",
+      "very_high": "To a very high degree"
+    },
+    "frequency": {
+      "never": "Never / almost never",
+      "seldom": "Seldom",
+      "sometimes": "Sometimes",
+      "often": "Often",
+      "always": "Always / almost always"
+    },
+    "assessment": {
+      "progress": "Question {current} of 8",
+      "back": "Back",
+      "next": "Continue",
+      "required": "Choose one option to continue.",
+      "privacy": "Your answers are not sent to third-party analytics."
+    },
+    "processing": {
+      "title": "Calculating your score",
+      "steps": [
+        "Applying the CBI scale",
+        "Comparing with the PUMA reference",
+        "Preparing your preview"
+      ],
+      "note": "The calculation is deterministic; generative AI does not produce the number."
+    },
+    "preview": {
+      "eyebrow": "Your current result",
+      "score_label": "Work-related burnout",
+      "above": "Your score is at or above the PUMA reference threshold of 50.",
+      "below": "Your score is below the PUMA reference threshold of 50.",
+      "context": "PUMA: human-service workers in Denmark. Contextual reference, not a global norm or diagnosis.",
+      "driver": "Your highest driver right now",
+      "action": "One action for this week",
+      "action_body": "Choose one small, observable change related to your top driver and re-check later; do not treat a single measurement as destiny.",
+      "locked_title": "What could change if your responses change",
+      "locked_body": "The report shows conditional improve / no-change / worsen scenarios. They are mathematical what-ifs, not predictions.",
+      "cta": "Get my full report"
+    },
+    "request": {
+      "title": "Get the full report free",
+      "body": "We’ll send your what-if scenarios, top 3 drivers, contextual benchmark, 7-day plan and methodology.",
+      "email": "Email",
+      "email_placeholder": "you@example.com",
+      "consent": "I agree to use my email to generate and deliver this report.",
+      "marketing": "Send me StressCast updates. Optional.",
+      "privacy": "During validation, a copy of your responses, result and PDF is sent to the StressCast operator to review and complete manual delivery. It is not used for employment decisions or third-party analytics.",
+      "cta": "Send my report",
+      "invalid_email": "Enter a valid email.",
+      "consent_required": "We need delivery consent to send your report."
+    },
+    "success": {
+      "title": "Report ready",
+      "body": "In production, you would receive a private link by email. In this prototype, you can open it here.",
+      "cta": "View demo report"
+    },
+    "report": {
+      "title": "Your StressCast report",
+      "current": "Current score",
+      "scenarios": "Conditional 30-day scenarios",
+      "scenario_note": "If up to two drivers move one category. This is not a probability, forecast or confidence interval.",
+      "drivers": "Top 3 drivers",
+      "benchmark": "Contextual reference",
+      "plan": "7-day plan",
+      "method": "Methodology and assumptions",
+      "download": "Download PDF",
+      "id": "Verification ID"
+    },
+    "legal": {
+      "disclaimer": "StressCast is a work-wellbeing reflection tool. It does not diagnose, treat or replace a qualified professional. It must not be used to make employment decisions about another person.",
+      "support": "If distress is severe, persistent or affects safety or daily functioning, seek appropriate professional support in your country."
+    }
+  },
+  "pt": {
+    "tagline": "Meça seu esgotamento no trabalho. Explore o que pode mudar.",
+    "landing": {
+      "eyebrow": "Check de esgotamento no trabalho · ~60–90 s",
+      "headline": "Veja quanto esgotamento relacionado ao trabalho você está carregando agora.",
+      "body": "Responda a 7 perguntas do Copenhagen Burnout Inventory. Você receberá uma pontuação atual de 0–100, uma referência contextual e um relatório com cenários condicionais. Não é diagnóstico nem previsão.",
+      "cta": "Começar meu check",
+      "trust": "Cálculo auditável · 7 itens CBI · Sem biometria · Sem dados pessoais antes do relatório"
+    },
+    "country": {
+      "title": "Onde você trabalha principalmente?",
+      "help": "Isso só ajusta idioma, moeda e notas de evidência. Não altera sua pontuação.",
+      "cta": "Continuar"
+    },
+    "questions": {
+      "emotionally_exhausting": "Em que grau o seu trabalho é emocionalmente exaustivo?",
+      "burned_out_due_work": "Em que grau você se sente esgotado(a) por causa do trabalho?",
+      "work_frustrates": "Em que grau o seu trabalho causa frustração?",
+      "worn_out_end_day": "Com que frequência você se sente esgotado(a) ao fim do dia de trabalho?",
+      "exhausted_morning": "Com que frequência você acorda exausto(a) ao pensar em outro dia de trabalho?",
+      "every_working_hour_tiring": "Com que frequência você sente que cada hora de trabalho é cansativa?",
+      "energy_family_friends": "Com que frequência você tem energia suficiente para família e amigos no tempo livre?"
+    },
+    "degree": {
+      "very_low": "Em grau muito baixo",
+      "low": "Em grau baixo",
+      "somewhat": "Um pouco",
+      "high": "Em grau alto",
+      "very_high": "Em grau muito alto"
+    },
+    "frequency": {
+      "never": "Nunca / quase nunca",
+      "seldom": "Raramente",
+      "sometimes": "Às vezes",
+      "often": "Frequentemente",
+      "always": "Sempre / quase sempre"
+    },
+    "assessment": {
+      "progress": "Pergunta {current} de 8",
+      "back": "Voltar",
+      "next": "Continuar",
+      "required": "Escolha uma opção para continuar.",
+      "privacy": "Suas respostas não são enviadas para analytics de terceiros."
+    },
+    "processing": {
+      "title": "Calculando sua pontuação",
+      "steps": [
+        "Aplicando a escala CBI",
+        "Comparando com a referência PUMA",
+        "Preparando sua prévia"
+      ],
+      "note": "O cálculo é determinístico; IA generativa não produz o número."
+    },
+    "preview": {
+      "eyebrow": "Seu resultado atual",
+      "score_label": "Esgotamento relacionado ao trabalho",
+      "above": "Sua pontuação está igual ou acima do limiar de referência PUMA de 50.",
+      "below": "Sua pontuação está abaixo do limiar de referência PUMA de 50.",
+      "context": "PUMA: trabalhadores de serviços humanos na Dinamarca. Referência contextual, não norma global nem diagnóstico.",
+      "driver": "Seu principal driver agora",
+      "action": "Uma ação para esta semana",
+      "action_body": "Escolha uma mudança pequena e observável ligada ao principal driver e repita o check depois; não trate uma única medição como destino.",
+      "locked_title": "O que poderia mudar se suas respostas mudassem",
+      "locked_body": "O relatório mostra cenários condicionais de melhora / sem mudança / piora. São what-if matemáticos, não previsões.",
+      "cta": "Receber meu relatório completo"
+    },
+    "request": {
+      "title": "Receba o relatório completo grátis",
+      "body": "Enviaremos cenários what-if, top 3 drivers, benchmark contextual, plano de 7 dias e metodologia.",
+      "email": "Email",
+      "email_placeholder": "voce@exemplo.com",
+      "consent": "Concordo em usar meu email para gerar e entregar este relatório.",
+      "marketing": "Quero receber novidades do StressCast. Opcional.",
+      "privacy": "Na fase de validação, uma cópia das suas respostas, resultado e PDF é enviada ao operador do StressCast para revisar e concluir manualmente a entrega. Não é usada para decisões de emprego nem analytics de terceiros.",
+      "cta": "Enviar meu relatório",
+      "invalid_email": "Digite um email válido.",
+      "consent_required": "Precisamos do consentimento de entrega para enviar seu relatório."
+    },
+    "success": {
+      "title": "Relatório pronto",
+      "body": "Em produção, você receberia um link privado por email. Neste protótipo, pode abri-lo aqui.",
+      "cta": "Ver relatório demo"
+    },
+    "report": {
+      "title": "Seu relatório StressCast",
+      "current": "Pontuação atual",
+      "scenarios": "Cenários condicionais em 30 dias",
+      "scenario_note": "Se até dois drivers mudarem uma categoria. Não representa probabilidade, previsão ou intervalo de confiança.",
+      "drivers": "Top 3 drivers",
+      "benchmark": "Referência contextual",
+      "plan": "Plano de 7 dias",
+      "method": "Metodologia e premissas",
+      "download": "Baixar PDF",
+      "id": "ID de verificação"
+    },
+    "legal": {
+      "disclaimer": "StressCast é uma ferramenta de reflexão sobre bem-estar no trabalho. Não diagnostica, trata nem substitui um profissional qualificado. Não deve ser usada para decisões de emprego sobre outra pessoa.",
+      "support": "Se o sofrimento for intenso, persistente ou afetar sua segurança ou funcionamento diário, procure apoio profissional apropriado no seu país."
+    }
+  }
+}

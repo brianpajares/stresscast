@@ -1,0 +1,7 @@
+* text=auto eol=lf
+# Los artefactos de Drive se verifican por SHA-256: nunca normalizar saltos de línea.
+drive/** -text
+spec/drive_manifest.json -text
+*.xlsx binary
+*.png binary
+*.ico binary

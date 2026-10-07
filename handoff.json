@@ -1,0 +1,302 @@
+{
+  "app_slug": "stresscast",
+  "app_name": "StressCast",
+  "version": "v4",
+  "stage_completed": 4,
+  "status": "READY_TO_BUILD",
+  "next_agent": "LLM_programmer",
+  "created_at": "2026-10-06T11:31:00-05:00",
+  "files": [
+    ".env.example",
+    "00_START_HERE.md",
+    "00_START_HERE_STAGE3.md",
+    "01_estrategia/brief.json",
+    "01_estrategia/brief_estrategico.docx",
+    "01_estrategia/brief_estrategico.md",
+    "01_estrategia/fuentes_mercado.csv",
+    "02_datos_modelo/base_stresscast.xlsx",
+    "02_datos_modelo/drive/base/base_stresscast.xlsx",
+    "02_datos_modelo/drive/base/fuentes_datos.csv",
+    "02_datos_modelo/drive/docs/model_card.md",
+    "02_datos_modelo/drive/model/engine_config.json",
+    "02_datos_modelo/drive/model/inputs.schema.json",
+    "02_datos_modelo/drive/model/model_spec.json",
+    "02_datos_modelo/drive/templates/outputs_spec.json",
+    "02_datos_modelo/drive/templates/report_template.json",
+    "02_datos_modelo/drive_manifest.json",
+    "02_datos_modelo/engine_reference.py",
+    "02_datos_modelo/estudio_modelos.md",
+    "02_datos_modelo/fuentes_datos.csv",
+    "02_datos_modelo/ingest/ingest.py",
+    "02_datos_modelo/inputs.schema.json",
+    "02_datos_modelo/model_card.md",
+    "02_datos_modelo/model_spec.json",
+    "02_datos_modelo/monetizacion.json",
+    "02_datos_modelo/outputs_spec.json",
+    "02_datos_modelo/test_vectors.json",
+    "03_qa_ux/analytics_events.json",
+    "03_qa_ux/components.md",
+    "03_qa_ux/copy_i18n.json",
+    "03_qa_ux/design_tokens.json",
+    "03_qa_ux/prototype.html",
+    "03_qa_ux/qa_checks.json",
+    "03_qa_ux/qa_engine.py",
+    "03_qa_ux/qa_report.md",
+    "03_qa_ux/report_layout.md",
+    "03_qa_ux/sitemap_flows.md",
+    "03_qa_ux/ux_spec.md",
+    "AGENTS.md",
+    "BUILD_PROMPT.md",
+    "CLAUDE.md",
+    "DECISIONS.md",
+    "README_START_HERE.md",
+    "TASKS.md",
+    "docs/ACCEPTANCE_TESTS.md",
+    "docs/DRIVE_SETUP.md",
+    "docs/LAUNCH_CHECKLIST.md",
+    "docs/PRD.docx",
+    "docs/PRD.md",
+    "docs/TRACTION_PLAN.md",
+    "docs/brief_estrategico.md",
+    "docs/decisions_log.md",
+    "docs/final_audit.md",
+    "docs/qa_report.md",
+    "drive/base/base_stresscast.xlsx",
+    "drive/base/fuentes_datos.csv",
+    "drive/docs/model_card.md",
+    "drive/model/engine_config.json",
+    "drive/model/inputs.schema.json",
+    "drive/model/model_spec.json",
+    "drive/templates/outputs_spec.json",
+    "drive/templates/report_template.json",
+    "model/engine_reference.py",
+    "model/ingest/ingest.py",
+    "model/model_card.md",
+    "model/qa_engine.py",
+    "spec/analytics_events.json",
+    "spec/copy_i18n.json",
+    "spec/db_schema.sql",
+    "spec/design_tokens.json",
+    "spec/drive_manifest.json",
+    "spec/inputs.schema.json",
+    "spec/model_spec.json",
+    "spec/monetizacion.json",
+    "spec/openapi.yaml",
+    "spec/outputs_spec.json",
+    "spec/test_vectors.json",
+    "ux/components.md",
+    "ux/prototype.html",
+    "ux/report_layout.md",
+    "ux/sitemap_flows.md",
+    "ux/ux_spec.md",
+    "handoff.json"
+  ],
+  "decisions": [
+    "Rename working product from MindGuard to StressCast because MindGuard has multiple 2026 collisions in mental health and AI safety.",
+    "Primary wedge is an explainable 30-day burnout/load forecast, not a generic wellness chatbot.",
+    "Core calculation must be deterministic/statistical; an LLM may only draft explanations from structured outputs.",
+    "Use at most 8 self-report inputs and no lab/device inputs in MVP.",
+    "No voice, camera, biometrics or emotion recognition in v1.",
+    "Phase 1 validates demand with email-for-report and owner copy; Phase 2 adds payment.",
+    "If Agent 2 cannot validate longitudinal prediction, output is labeled projection/scenario rather than probability.",
+    "Stage 2 normalizes the stage-1 PIVOT-ready status to DATA_READY after implementing the approved fallback.",
+    "Use the complete 7-item CBI Work-related subscale for the numeric core; country only localizes price/language and never changes the score.",
+    "Do not expose a calibrated 30-day probability: no open, commercially usable longitudinal dataset at the required 30-day horizon was found.",
+    "Replace forecast probability with a deterministic conditional scenario envelope: no-change, up to two eligible items improve one response category, or up to two worsen one category.",
+    "Treat scenario_items_changed=2 as a preliminary product sensitivity assumption, not a causal or statistical estimate.",
+    "Remove weekly hours and sleep from v1 scoring because no validated coefficient was found to convert them into 30-day CBI points.",
+    "A large-language model may narrate structured outputs but may not calculate the score, scenarios, cutoff, benchmark delta or expected values.",
+    "No train.py is included because the selected model is deterministic and requires no training.",
+    "PPP factors are source data; recommended local prices and variable-cost ceiling remain explicit commercial hypotheses.",
+    "Stage 3 verdict is PASS_WITH_FIXES; proceed to Agent 4.",
+    "Treat brief.json as canonical strategy brief; stage-1 narrative MD/DOCX are historical snapshots and predictive wording in them is superseded.",
+    "Never use a time-axis mini-chart in the free preview; show current score and contextual reference only.",
+    "Keep 30-day outputs explicitly conditional what-if scenarios; if comprehension testing shows material confusion, remove the horizon and use snapshot-only.",
+    "Do not copy individual assessment responses, score, or PDF to the owner/operator by default.",
+    "No answer values, score, email, band, or report contents in third-party analytics.",
+    "Payment stays disabled in phase 1; local prices are hypotheses, not willingness-to-pay evidence.",
+    "FRIDAY RoBERTa LoRA is not production-approved until its Apache-2.0 vs MIT license conflict is resolved.",
+    "Agent 4 uses Vercel as primary deployment and Netlify as documented alternative.",
+    "Agent 4 ports the deterministic Python engine to TypeScript; Python remains QA oracle only.",
+    "Agent 4 validation mode sends an explicitly disclosed operational copy to OWNER_EMAIL as required by the factory workflow.",
+    "Agent 4 adds one_generic_action to final outputs_spec because the inherited free_preview referenced it without a matching output definition."
+  ],
+  "assumptions": [
+    "The inaccessible Notion page titled MindGuard represents a B2C concept for burnout/stress prediction.",
+    "3.5B working people is used as a rough global workforce proxy for order-of-magnitude calculations.",
+    "15% professional/managerial share is an internal TAM assumption, not an external statistic.",
+    "25% of long-hours workers are assumed digitally reachable/B2C-fit for a rough SAM; segments overlap.",
+    "Keyword volume figures from 2023 remain directionally useful but must be refreshed before acquisition planning.",
+    "StressCast is a working name; domain and trademark availability have not been verified.",
+    "Proposed country prices are internal hypotheses, not observed market prices.",
+    "The two-item scenario movement is a sensitivity design choice and has no claimed empirical probability of occurring within 30 days.",
+    "PUMA benchmark values are contextual references from Danish human-service workers, not global clinical norms.",
+    "The CBI is treated as commercially usable because validation literature describes the instrument as public domain; retain attribution and source records.",
+    "The US$0.50 variable-cost figure is a budget ceiling assumption, not an observed vendor quote.",
+    "A 30-day default retention for individual validation payloads is a product starting point and requires legal confirmation per market.",
+    "The owner-copy validation workflow is acceptable only with explicit disclosure, restricted access and manual-fulfillment purpose.",
+    "The build package can be implemented without a Python runtime dependency."
+  ],
+  "open_issues": [
+    "LAUNCH GATE: validate exact Spanish production wording of all seven CBI Work-related items against approved validated-language sources.",
+    "LAUNCH GATE: validate exact Portuguese/PT-BR production wording and context of use.",
+    "LAUNCH GATE: market-specific legal/privacy review, including validation-mode owner copy, retention, transfers and consent.",
+    "LAUNCH GATE: verify StressCast trademark/domain availability.",
+    "PRODUCT GATE: comprehension test >=90% must interpret 30-day output as conditional what-if; otherwise use snapshot-only.",
+    "FUTURE MODEL: collect a consented longitudinal cohort before any true predictive 30-day model.",
+    "ACQUISITION: refresh keyword volumes before scaling paid acquisition."
+  ],
+  "updated_at": "2026-10-06T16:33:00-05:00",
+  "data_quality": {
+    "verified_rows_pct": 96.8,
+    "verified_rows": "30/31",
+    "scope": "filas de datos/parámetros de referencia consumidos por el modelo en Parametros, Tablas_CBI, Tablas_Escala y Tablas_Benchmark; excluye hipótesis de monetización",
+    "preliminary_rows": [
+      "Parametros.scenario_items_changed"
+    ],
+    "pricing_note": "Los factores PPP están verificados por fuente; los precios recomendados siguen preliminares."
+  },
+  "model": {
+    "primary": "CBI Work-related completo (7 ítems) + sobre determinista de escenarios a 30 días",
+    "backup": "CBI Work-related snapshot only, sin horizonte temporal",
+    "model_id": "stresscast_cbi_work_scenario_v1",
+    "model_version": "1.0.0",
+    "calibrated_30d_probability": false,
+    "training_required": false,
+    "test_vectors": 20,
+    "motor_excel_python_check": {
+      "status": "PASS",
+      "example_score": 67.8571,
+      "scenario_improve": 60.7143,
+      "scenario_no_change": 67.8571,
+      "scenario_worsen": 75.0
+    }
+  },
+  "resolved_issues": [
+    "RESOLVED: No suitable longitudinal 30-day dataset was identified; the product uses scenario projection instead of calibrated probability.",
+    "RESOLVED: Deterministic scenario-adjustment formula is specified and tested in model_spec.json / engine_reference.py.",
+    "RESOLVED QA3: canonical strategy wording now matches the deterministic CBI current score + conditional scenario model.",
+    "RESOLVED QA3: free preview no longer draws a temporal mini-curve.",
+    "RESOLVED QA3: phase-1 owner copy of individual assessment/report removed by default.",
+    "RESOLVED QA3: price hypotheses aligned across canonical brief and monetization.",
+    "RESOLVED QA3: reference engine hardened to inputs.schema constraints for country casing and additional properties."
+  ],
+  "validation": {
+    "xlsx_reopened": true,
+    "xlsx_formula_errors": 0,
+    "engine_test_vectors_passed": "20/20",
+    "motor_vs_engine_example": "PASS",
+    "drive_manifest_hashes": "8/8 PASS",
+    "required_files_present": true
+  },
+  "qa_verdict": "PASS_WITH_FIXES",
+  "qa_findings": {
+    "CRITICO": {
+      "count": 0,
+      "open": 0,
+      "items": []
+    },
+    "MAYOR": {
+      "count": 6,
+      "fixed": 4,
+      "open_gates": 2,
+      "items": [
+        "FIXED: brief predictive claim replaced by current CBI score + conditional what-if scenarios.",
+        "FIXED: free preview temporal mini-line replaced by current-score marker/reference visual.",
+        "FIXED: owner copy of individual answers/report removed by default; aggregate telemetry only.",
+        "FIXED: stage-1 prices aligned with stage-2 PPP price hypotheses.",
+        "OPEN LAUNCH GATE: exact ES/PT questionnaire wording requires final validation/linguistic review.",
+        "OPEN LAUNCH GATE: market-specific legal/privacy review before public launch."
+      ]
+    },
+    "MENOR": {
+      "count": 2,
+      "fixed": 2,
+      "items": [
+        "FIXED: reference/QA engines now enforce schema-like country casing and reject additional properties.",
+        "FIXED/ISOLATED: auxiliary HF RoBERTa license conflict marked no_verificado and excluded from production."
+      ]
+    }
+  },
+  "qa_validation": {
+    "independent_engine": "03_qa_ux/qa_engine.py",
+    "golden_vectors": {
+      "passed": 20,
+      "total": 20,
+      "rel_tol": 1e-06,
+      "abs_tol": 5.1e-05,
+      "abs_tol_reason": "golden floats rounded to 4 decimals"
+    },
+    "reference_parity": {
+      "passed": 20,
+      "total": 20
+    },
+    "robustness_cases": {
+      "passed": 10,
+      "total": 10
+    },
+    "exhaustive_grid": {
+      "passed": 78125,
+      "total": 78125,
+      "unique_scores": 29
+    },
+    "xlsx": {
+      "sheets": 11,
+      "formula_error_scan": "PASS",
+      "critical_blanks": "PASS",
+      "render_review": "PASS"
+    },
+    "drive_manifest": "regenerated after stage-3 corrections"
+  },
+  "ux": {
+    "positioning": "current CBI Work-related score + conditional what-if scenarios; not prediction/diagnosis",
+    "value_time_target": "<90s to preview",
+    "mobile_pattern": "country + 7 CBI items; one input per screen",
+    "preview": "current score/reference + one driver/action + locked scenario teaser; no time axis",
+    "phase1_gate": "email for free full report; delivery consent separate from optional marketing",
+    "privacy": "no owner copy of individual answers/report by default",
+    "prototype": "03_qa_ux/prototype.html",
+    "languages": [
+      "es",
+      "en",
+      "pt-BR"
+    ],
+    "translation_gate": "ES/PT questionnaire wording preliminary until final validated wording review"
+  },
+  "canonical_build": {
+    "prd": "docs/PRD.md",
+    "prd_docx": "docs/PRD.docx",
+    "build_prompt": "BUILD_PROMPT.md",
+    "spec_dir": "spec/",
+    "ux_dir": "ux/",
+    "model_dir": "model/",
+    "drive_dir": "drive/"
+  },
+  "monetization": {
+    "mode_default": "validation",
+    "stripe_enabled_default": false,
+    "validation_owner_copy": true,
+    "owner_copy_guardrail": "Explicit delivery disclosure; manual fulfillment only; no third-party analytics."
+  },
+  "validation_final": {
+    "engine_test_vectors": "20/20 PASS",
+    "json": "31/31 JSON files parse",
+    "drive_manifest": "8/8 PASS",
+    "openapi": "OpenAPI 3.1 YAML parses; 10 paths",
+    "traceability": "32/32 FR map to US and AT",
+    "outputs": "15 outputs; all free_preview.give IDs exist",
+    "env": "PASS; canonical references are defined in .env.example",
+    "secrets": "PASS; no real secrets detected",
+    "prd_docx": "13 pages rendered and visually reviewed; glyph issue corrected",
+    "placeholder_markers": "PASS; no unresolved placeholder markers"
+  },
+  "changelog": [
+    "v4: generated full PRD.md + PRD.docx and programmer handoff documents.",
+    "v4: added OpenAPI 3.1 and Supabase RLS schema.",
+    "v4: aligned validation monetization with factory workflow and explicit operator-copy disclosure.",
+    "v4: added missing one_generic_action output referenced by preview and bumped outputs_spec to 1.2.0.",
+    "v4: regenerated final Drive manifest checksums; 8/8 validated.",
+    "v4: preserved stage 1-3 folders unchanged as cumulative historical evidence.",
+    "v4: aligned canonical UX/prototype privacy copy with validation-mode owner disclosure; stage-3 originals remain preserved."
+  ]
+}

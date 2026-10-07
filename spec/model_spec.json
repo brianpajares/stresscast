@@ -1,0 +1,155 @@
+{
+  "app": "StressCast",
+  "version": "2.0.0",
+  "model_id": "stresscast_cbi_work_scenario_v1",
+  "objective": {
+    "primary": "Medir burnout relacionado con el trabajo actual en una escala 0–100 usando CBI Work-related.",
+    "30d": "Mostrar escenarios contrafactuales a 30 días; no predecir probabilidad ni cambio temporal real.",
+    "prohibited_claims": [
+      "diagnóstico médico",
+      "probabilidad calibrada de burnout a 30 días",
+      "causalidad de las recomendaciones"
+    ]
+  },
+  "formula": {
+    "notation": "Para i=1..7, p_i ∈ {0,25,50,75,100}. Para el ítem 7 (energía), p_7 = 100 - r_7, donde r_7 es el puntaje directo. S = (1/7)·Σ p_i. Escenario mejora = max(0, S - k_improve·25/7); escenario empeora = min(100, S + k_worsen·25/7), con k∈{0,1,2} según ítems elegibles.",
+    "pseudocode": [
+      "mapear respuestas ordinales a 0,25,50,75,100",
+      "invertir el ítem energy_family_friends: burden = 100 - direct_score",
+      "S = mean(7 burden_scores)",
+      "band = 'high_reference' si S >= 50; en otro caso 'below_high_reference'",
+      "eligible_improve = count(item_score > 0); k_improve=min(2, eligible_improve)",
+      "eligible_worsen = count(item_score < 100); k_worsen=min(2, eligible_worsen)",
+      "optimistic_30d=max(0, S - k_improve*25/7)",
+      "no_change_30d=S",
+      "pessimistic_30d=min(100, S + k_worsen*25/7)"
+    ]
+  },
+  "variables": [
+    {
+      "name": "country",
+      "type": "enum",
+      "unit": "ISO 3166-1 alpha-2",
+      "role": "localización de idioma/precio; no modifica score"
+    },
+    {
+      "name": "emotionally_exhausting",
+      "scale": "degree",
+      "unit": "categoría CBI"
+    },
+    {
+      "name": "burned_out_due_work",
+      "scale": "degree",
+      "unit": "categoría CBI"
+    },
+    {
+      "name": "work_frustrates",
+      "scale": "degree",
+      "unit": "categoría CBI"
+    },
+    {
+      "name": "worn_out_end_day",
+      "scale": "frequency",
+      "unit": "categoría CBI"
+    },
+    {
+      "name": "exhausted_morning",
+      "scale": "frequency",
+      "unit": "categoría CBI"
+    },
+    {
+      "name": "every_working_hour_tiring",
+      "scale": "frequency",
+      "unit": "categoría CBI"
+    },
+    {
+      "name": "energy_family_friends",
+      "scale": "frequency",
+      "unit": "categoría CBI",
+      "reverse_scored": true
+    }
+  ],
+  "parameters": [
+    {
+      "name": "response_step",
+      "value": 25,
+      "unit": "points",
+      "source_id": "SRC_CBI_NFA_PDF",
+      "status": "verificado"
+    },
+    {
+      "name": "high_reference_cutoff",
+      "value": 50,
+      "unit": "points",
+      "source_id": "SRC_CBI_NFA_NORMS",
+      "status": "verificado"
+    },
+    {
+      "name": "puma_work_mean",
+      "value": 33.0,
+      "unit": "points",
+      "source_id": "SRC_CBI_NFA_NORMS",
+      "status": "verificado"
+    },
+    {
+      "name": "puma_work_sd",
+      "value": 17.7,
+      "unit": "points",
+      "source_id": "SRC_CBI_NFA_NORMS",
+      "status": "verificado"
+    },
+    {
+      "name": "puma_work_n",
+      "value": 1910,
+      "unit": "persons",
+      "source_id": "SRC_CBI_NFA_NORMS",
+      "status": "verificado"
+    },
+    {
+      "name": "scenario_items_changed",
+      "value": 2,
+      "unit": "items",
+      "source_id": "INTERNAL_SCENARIO_ASSUMPTION",
+      "status": "preliminar"
+    }
+  ],
+  "assumptions": [
+    "El CBI Work-related se usa como escala continua de agotamiento laboral percibido, no como diagnóstico.",
+    "La trayectoria a 30 días es una simulación condicional: 'si dos drivers cambian una categoría'.",
+    "No se asume que un cambio de categoría vaya a ocurrir realmente en 30 días.",
+    "La comparación PUMA corresponde a profesiones de servicios humanos en Dinamarca y no es una norma global."
+  ],
+  "validity_range": {
+    "population": "adultos que trabajan y pueden auto-reportar su experiencia laboral",
+    "score_range": [
+      0,
+      100
+    ],
+    "languages": {
+      "en": "CBI original",
+      "es": "existe validación en España; la implementación debe usar el wording validado en producción",
+      "pt-BR": "existe validación en profesionales de salud de Brasil; revisar wording/sector antes de expansión general"
+    },
+    "excluded": "uso clínico, decisiones laborales por terceros, menores, inferencia biométrica"
+  },
+  "uncertainty": {
+    "type": "scenario_envelope_not_statistical_ci",
+    "description": "El rango entre escenario mejora y empeora representa sensibilidad a dos cambios ordinales de un nivel, no un intervalo de confianza."
+  },
+  "sensitivity": {
+    "one_item_one_category_points": 3.5714285714285716,
+    "two_items_one_category_points": 7.142857142857143,
+    "interpretation": "Cada salto de una categoría en un ítem cambia el promedio en 3.571 puntos, salvo topes 0/100."
+  },
+  "evidence": {
+    "internal_reliability_puma_work_alpha": 0.87,
+    "spanish_work_alpha": 0.83,
+    "brazilian_portuguese_work_alpha": 0.891,
+    "longitudinal_30d_validated": false
+  },
+  "versioning": {
+    "model_version": "1.0.0",
+    "data_version": "2.0.0",
+    "released": "2026-10-06"
+  }
+}

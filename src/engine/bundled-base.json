@@ -1,0 +1,133 @@
+{
+  "source": "drive/base/base_stresscast.xlsx",
+  "source_sha256": "7a318b5d7529c95d079328fe1c00877b874d9c5fab7043989d2e06110b943728",
+  "data_version": "3.0.0",
+  "manifest_version": "1.2.0",
+  "base": {
+    "params": {
+      "response_step": 25,
+      "high_reference_cutoff": 50,
+      "puma_work_mean": 33,
+      "puma_work_sd": 17.7,
+      "puma_work_n": 1910,
+      "puma_high_share": 0.198,
+      "scenario_items_changed": 2
+    },
+    "items": [
+      {
+        "item_id": "WB1",
+        "order": 1,
+        "input_key": "emotionally_exhausting",
+        "scale_type": "degree",
+        "reverse_scored": false
+      },
+      {
+        "item_id": "WB2",
+        "order": 2,
+        "input_key": "burned_out_due_work",
+        "scale_type": "degree",
+        "reverse_scored": false
+      },
+      {
+        "item_id": "WB3",
+        "order": 3,
+        "input_key": "work_frustrates",
+        "scale_type": "degree",
+        "reverse_scored": false
+      },
+      {
+        "item_id": "WB4",
+        "order": 4,
+        "input_key": "worn_out_end_day",
+        "scale_type": "frequency",
+        "reverse_scored": false
+      },
+      {
+        "item_id": "WB5",
+        "order": 5,
+        "input_key": "exhausted_morning",
+        "scale_type": "frequency",
+        "reverse_scored": false
+      },
+      {
+        "item_id": "WB6",
+        "order": 6,
+        "input_key": "every_working_hour_tiring",
+        "scale_type": "frequency",
+        "reverse_scored": false
+      },
+      {
+        "item_id": "WB7",
+        "order": 7,
+        "input_key": "energy_family_friends",
+        "scale_type": "frequency",
+        "reverse_scored": true
+      }
+    ],
+    "scaleMap": {
+      "degree|very_low": 0,
+      "degree|low": 25,
+      "degree|somewhat": 50,
+      "degree|high": 75,
+      "degree|very_high": 100,
+      "frequency|never": 0,
+      "frequency|seldom": 25,
+      "frequency|sometimes": 50,
+      "frequency|often": 75,
+      "frequency|always": 100
+    },
+    "benchmarks": {
+      "puma_work_mean": 33,
+      "puma_work_sd": 17.7,
+      "puma_work_n": 1910,
+      "puma_high_share": 0.198,
+      "puma_work_alpha": 0.87,
+      "spain_work_alpha": 0.83,
+      "brazil_work_alpha": 0.891
+    },
+    "prices": {
+      "US": {
+        "country": "US",
+        "currency": "USD",
+        "recommended_price": 9.9,
+        "price_status": "preliminar"
+      },
+      "GB": {
+        "country": "GB",
+        "currency": "GBP",
+        "recommended_price": 6.9,
+        "price_status": "preliminar"
+      },
+      "CA": {
+        "country": "CA",
+        "currency": "CAD",
+        "recommended_price": 12.9,
+        "price_status": "preliminar"
+      },
+      "AU": {
+        "country": "AU",
+        "currency": "AUD",
+        "recommended_price": 14.9,
+        "price_status": "preliminar"
+      },
+      "BR": {
+        "country": "BR",
+        "currency": "BRL",
+        "recommended_price": 25.9,
+        "price_status": "preliminar"
+      },
+      "MX": {
+        "country": "MX",
+        "currency": "MXN",
+        "recommended_price": 109,
+        "price_status": "preliminar"
+      },
+      "ES": {
+        "country": "ES",
+        "currency": "EUR",
+        "recommended_price": 5.9,
+        "price_status": "preliminar"
+      }
+    }
+  }
+}

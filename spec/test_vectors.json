@@ -1,0 +1,2827 @@
+{
+  "schema_version": "1.1.0",
+  "generated_by": "engine_reference.py::calculate",
+  "generated_at": "2026-10-06",
+  "base_file": "base_stresscast.xlsx",
+  "notes": [
+    "Todos los expected fueron producidos ejecutando el motor; no se transcribieron manualmente.",
+    "No existe un caso individual publicado con las siete respuestas en las fuentes seleccionadas; PUMA aporta estadísticas agregadas, no un vector individual reproducible.",
+    "QA etapa 3 conserva los 20 golden vectors y añade robustness_cases; los casos inválidos deben fallar antes de cálculo."
+  ],
+  "cases": [
+    {
+      "case_id": "T01",
+      "description": "mínimo absoluto; todos los burden=0",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "very_low",
+        "burned_out_due_work": "very_low",
+        "work_frustrates": "very_low",
+        "worn_out_end_day": "never",
+        "exhausted_morning": "never",
+        "every_working_hour_tiring": "never",
+        "energy_family_friends": "always"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 0.0,
+        "reference_band": "below_high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 0.0,
+          "no_change": 0.0,
+          "worsen": 7.1429,
+          "k_improve": 0,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": -33.0,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 0.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 0.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 0.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 0.0
+          }
+        ],
+        "localized_price": {
+          "country": "US",
+          "currency": "USD",
+          "recommended_price": 9.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T02",
+      "description": "máximo absoluto; todos los burden=100",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "very_high",
+        "burned_out_due_work": "very_high",
+        "work_frustrates": "very_high",
+        "worn_out_end_day": "always",
+        "exhausted_morning": "always",
+        "every_working_hour_tiring": "always",
+        "energy_family_friends": "never"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 100.0,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 92.8571,
+          "no_change": 100.0,
+          "worsen": 100.0,
+          "k_improve": 2,
+          "k_worsen": 0,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 67.0,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 100.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 100.0
+          }
+        ],
+        "localized_price": {
+          "country": "US",
+          "currency": "USD",
+          "recommended_price": 9.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T03",
+      "description": "corte exacto 50; todas las respuestas centrales",
+      "inputs": {
+        "country": "ES",
+        "emotionally_exhausting": "somewhat",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 50.0,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 42.8571,
+          "no_change": 50.0,
+          "worsen": 57.1429,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 17.0,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 50.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 50.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 50.0
+          }
+        ],
+        "localized_price": {
+          "country": "ES",
+          "currency": "EUR",
+          "recommended_price": 5.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T04",
+      "description": "un paso por debajo del corte",
+      "inputs": {
+        "country": "BR",
+        "emotionally_exhausting": "low",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 46.4286,
+        "reference_band": "below_high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 39.2857,
+          "no_change": 46.4286,
+          "worsen": 53.5714,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 13.4286,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "low",
+            "direct_points": 25.0,
+            "burden_points": 25.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 50.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 50.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "burden_points": 50.0
+          }
+        ],
+        "localized_price": {
+          "country": "BR",
+          "currency": "BRL",
+          "recommended_price": 25.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T05",
+      "description": "un paso por encima del corte",
+      "inputs": {
+        "country": "GB",
+        "emotionally_exhausting": "high",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 53.5714,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 46.4286,
+          "no_change": 53.5714,
+          "worsen": 60.7143,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 20.5714,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 50.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 50.0
+          }
+        ],
+        "localized_price": {
+          "country": "GB",
+          "currency": "GBP",
+          "recommended_price": 6.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T06",
+      "description": "prueba de reversión: energía 'never' añade 100 de burden",
+      "inputs": {
+        "country": "CA",
+        "emotionally_exhausting": "very_low",
+        "burned_out_due_work": "very_low",
+        "work_frustrates": "very_low",
+        "worn_out_end_day": "never",
+        "exhausted_morning": "never",
+        "every_working_hour_tiring": "never",
+        "energy_family_friends": "never"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 14.2857,
+        "reference_band": "below_high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 10.7143,
+          "no_change": 14.2857,
+          "worsen": 21.4286,
+          "k_improve": 1,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": -18.7143,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 100.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 0.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 0.0
+          }
+        ],
+        "localized_price": {
+          "country": "CA",
+          "currency": "CAD",
+          "recommended_price": 12.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T07",
+      "description": "un único driver al máximo",
+      "inputs": {
+        "country": "AU",
+        "emotionally_exhausting": "very_high",
+        "burned_out_due_work": "very_low",
+        "work_frustrates": "very_low",
+        "worn_out_end_day": "never",
+        "exhausted_morning": "never",
+        "every_working_hour_tiring": "never",
+        "energy_family_friends": "always"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 14.2857,
+        "reference_band": "below_high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 10.7143,
+          "no_change": 14.2857,
+          "worsen": 21.4286,
+          "k_improve": 1,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": -18.7143,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 0.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 0.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 0.0
+          }
+        ],
+        "localized_price": {
+          "country": "AU",
+          "currency": "AUD",
+          "recommended_price": 14.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T08",
+      "description": "seis máximos y energía protectora máxima",
+      "inputs": {
+        "country": "MX",
+        "emotionally_exhausting": "very_high",
+        "burned_out_due_work": "very_high",
+        "work_frustrates": "very_high",
+        "worn_out_end_day": "always",
+        "exhausted_morning": "always",
+        "every_working_hour_tiring": "always",
+        "energy_family_friends": "always"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 85.7143,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 78.5714,
+          "no_change": 85.7143,
+          "worsen": 89.2857,
+          "k_improve": 2,
+          "k_worsen": 1,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 52.7143,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 0.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 100.0
+          }
+        ],
+        "localized_price": {
+          "country": "MX",
+          "currency": "MXN",
+          "recommended_price": 109.0,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T09",
+      "description": "dos drivers en 25; mejora toca piso 0",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "low",
+        "burned_out_due_work": "low",
+        "work_frustrates": "very_low",
+        "worn_out_end_day": "never",
+        "exhausted_morning": "never",
+        "every_working_hour_tiring": "never",
+        "energy_family_friends": "always"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 7.1429,
+        "reference_band": "below_high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 0.0,
+          "no_change": 7.1429,
+          "worsen": 14.2857,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": -25.8571,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "low",
+            "direct_points": 25.0,
+            "burden_points": 25.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "low",
+            "direct_points": 25.0,
+            "burden_points": 25.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 0.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 25.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 25.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 0.0
+          }
+        ],
+        "localized_price": {
+          "country": "US",
+          "currency": "USD",
+          "recommended_price": 9.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T10",
+      "description": "un solo driver en 25; k_improve debe ser 1",
+      "inputs": {
+        "country": "ES",
+        "emotionally_exhausting": "low",
+        "burned_out_due_work": "very_low",
+        "work_frustrates": "very_low",
+        "worn_out_end_day": "never",
+        "exhausted_morning": "never",
+        "every_working_hour_tiring": "never",
+        "energy_family_friends": "always"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 3.5714,
+        "reference_band": "below_high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 0.0,
+          "no_change": 3.5714,
+          "worsen": 10.7143,
+          "k_improve": 1,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": -29.4286,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "low",
+            "direct_points": 25.0,
+            "burden_points": 25.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 0.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 25.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 0.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 0.0
+          }
+        ],
+        "localized_price": {
+          "country": "ES",
+          "currency": "EUR",
+          "recommended_price": 5.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T11",
+      "description": "solo un ítem puede empeorar; k_worsen debe ser 1",
+      "inputs": {
+        "country": "BR",
+        "emotionally_exhausting": "high",
+        "burned_out_due_work": "very_high",
+        "work_frustrates": "very_high",
+        "worn_out_end_day": "always",
+        "exhausted_morning": "always",
+        "every_working_hour_tiring": "always",
+        "energy_family_friends": "never"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 96.4286,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 89.2857,
+          "no_change": 96.4286,
+          "worsen": 100.0,
+          "k_improve": 2,
+          "k_worsen": 1,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 63.4286,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 100.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "burden_points": 100.0
+          }
+        ],
+        "localized_price": {
+          "country": "BR",
+          "currency": "BRL",
+          "recommended_price": 25.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T12",
+      "description": "caso ejemplo hoja Motor",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "high",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "always",
+        "exhausted_morning": "often",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "seldom"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 67.8571,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 60.7143,
+          "no_change": 67.8571,
+          "worsen": 75.0,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 34.8571,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "seldom",
+            "direct_points": 25.0,
+            "burden_points": 75.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "burden_points": 75.0
+          }
+        ],
+        "localized_price": {
+          "country": "US",
+          "currency": "USD",
+          "recommended_price": 9.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T13",
+      "description": "típico moderado-bajo",
+      "inputs": {
+        "country": "ES",
+        "emotionally_exhausting": "somewhat",
+        "burned_out_due_work": "low",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "seldom",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "often"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 39.2857,
+        "reference_band": "below_high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 32.1429,
+          "no_change": 39.2857,
+          "worsen": 46.4286,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 6.2857,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "low",
+            "direct_points": 25.0,
+            "burden_points": 25.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "seldom",
+            "direct_points": 25.0,
+            "burden_points": 25.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 25.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 50.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 50.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "burden_points": 50.0
+          }
+        ],
+        "localized_price": {
+          "country": "ES",
+          "currency": "EUR",
+          "recommended_price": 5.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T14",
+      "description": "típico moderado-alto con energía baja",
+      "inputs": {
+        "country": "BR",
+        "emotionally_exhausting": "high",
+        "burned_out_due_work": "high",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "often",
+        "exhausted_morning": "often",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "seldom"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 67.8571,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 60.7143,
+          "no_change": 67.8571,
+          "worsen": 75.0,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 34.8571,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "seldom",
+            "direct_points": 25.0,
+            "burden_points": 75.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "burden_points": 75.0
+          }
+        ],
+        "localized_price": {
+          "country": "BR",
+          "currency": "BRL",
+          "recommended_price": 25.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T15",
+      "description": "empate de drivers; desempate por orden de ítem",
+      "inputs": {
+        "country": "GB",
+        "emotionally_exhausting": "high",
+        "burned_out_due_work": "high",
+        "work_frustrates": "high",
+        "worn_out_end_day": "often",
+        "exhausted_morning": "often",
+        "every_working_hour_tiring": "often",
+        "energy_family_friends": "often"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 67.8571,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 60.7143,
+          "no_change": 67.8571,
+          "worsen": 75.0,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 34.8571,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 25.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 75.0
+          }
+        ],
+        "localized_price": {
+          "country": "GB",
+          "currency": "GBP",
+          "recommended_price": 6.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T16",
+      "description": "energía alta compensa parcialmente cargas medias",
+      "inputs": {
+        "country": "CA",
+        "emotionally_exhausting": "somewhat",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "high",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "often",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "always"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 50.0,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 42.8571,
+          "no_change": 50.0,
+          "worsen": 57.1429,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 17.0,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 0.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 50.0
+          }
+        ],
+        "localized_price": {
+          "country": "CA",
+          "currency": "CAD",
+          "recommended_price": 12.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T17",
+      "description": "mezcla de extremos",
+      "inputs": {
+        "country": "AU",
+        "emotionally_exhausting": "very_high",
+        "burned_out_due_work": "very_low",
+        "work_frustrates": "high",
+        "worn_out_end_day": "always",
+        "exhausted_morning": "never",
+        "every_working_hour_tiring": "often",
+        "energy_family_friends": "sometimes"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 57.1429,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 50.0,
+          "no_change": 57.1429,
+          "worsen": 64.2857,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 24.1429,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 75.0
+          }
+        ],
+        "localized_price": {
+          "country": "AU",
+          "currency": "AUD",
+          "recommended_price": 14.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T18",
+      "description": "mezcla de frecuencias y grado",
+      "inputs": {
+        "country": "MX",
+        "emotionally_exhausting": "low",
+        "burned_out_due_work": "high",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "seldom",
+        "exhausted_morning": "often",
+        "every_working_hour_tiring": "always",
+        "energy_family_friends": "often"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 53.5714,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 46.4286,
+          "no_change": 53.5714,
+          "worsen": 60.7143,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 20.5714,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "low",
+            "direct_points": 25.0,
+            "burden_points": 25.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "seldom",
+            "direct_points": 25.0,
+            "burden_points": 25.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 25.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 75.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "burden_points": 75.0
+          }
+        ],
+        "localized_price": {
+          "country": "MX",
+          "currency": "MXN",
+          "recommended_price": 109.0,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T19",
+      "description": "corte exacto alternativo con energía invertida",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "very_high",
+        "burned_out_due_work": "very_low",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "always",
+        "exhausted_morning": "never",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 50.0,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 42.8571,
+          "no_change": 50.0,
+          "worsen": 57.1429,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 17.0,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_low",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "somewhat",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 0.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "sometimes",
+            "direct_points": 50.0,
+            "burden_points": 50.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 50.0
+          }
+        ],
+        "localized_price": {
+          "country": "US",
+          "currency": "USD",
+          "recommended_price": 9.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    },
+    {
+      "case_id": "T20",
+      "description": "casi máximo con dos ítems elegibles para empeorar",
+      "inputs": {
+        "country": "ES",
+        "emotionally_exhausting": "high",
+        "burned_out_due_work": "very_high",
+        "work_frustrates": "very_high",
+        "worn_out_end_day": "always",
+        "exhausted_morning": "always",
+        "every_working_hour_tiring": "often",
+        "energy_family_friends": "never"
+      },
+      "expected": {
+        "model_id": "stresscast_cbi_work_scenario_v1",
+        "model_version": "1.0.0",
+        "score": 92.8571,
+        "reference_band": "high_reference",
+        "reference_cutoff": 50.0,
+        "scenario_30d": {
+          "improve": 85.7143,
+          "no_change": 92.8571,
+          "worsen": 100.0,
+          "k_improve": 2,
+          "k_worsen": 2,
+          "interpretation": "scenario_envelope_not_statistical_ci"
+        },
+        "sensitivity": {
+          "one_item_one_category_points": 3.5714,
+          "two_items_one_category_points": 7.1429
+        },
+        "benchmark": {
+          "puma_work_mean": 33.0,
+          "delta_vs_puma_mean": 59.8571,
+          "population_note": "PUMA human-service workers, Denmark; contextual reference, not global norm."
+        },
+        "item_scores": [
+          {
+            "item_id": "WB1",
+            "input_key": "emotionally_exhausting",
+            "order": 1,
+            "response": "high",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "order": 2,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "order": 3,
+            "response": "very_high",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "order": 4,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB5",
+            "input_key": "exhausted_morning",
+            "order": 5,
+            "response": "always",
+            "direct_points": 100.0,
+            "burden_points": 100.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB6",
+            "input_key": "every_working_hour_tiring",
+            "order": 6,
+            "response": "often",
+            "direct_points": 75.0,
+            "burden_points": 75.0,
+            "reverse_scored": false
+          },
+          {
+            "item_id": "WB7",
+            "input_key": "energy_family_friends",
+            "order": 7,
+            "response": "never",
+            "direct_points": 0.0,
+            "burden_points": 100.0,
+            "reverse_scored": true
+          }
+        ],
+        "top_drivers": [
+          {
+            "rank": 1,
+            "item_id": "WB2",
+            "input_key": "burned_out_due_work",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 2,
+            "item_id": "WB3",
+            "input_key": "work_frustrates",
+            "burden_points": 100.0
+          },
+          {
+            "rank": 3,
+            "item_id": "WB4",
+            "input_key": "worn_out_end_day",
+            "burden_points": 100.0
+          }
+        ],
+        "localized_price": {
+          "country": "ES",
+          "currency": "EUR",
+          "recommended_price": 5.9,
+          "price_status": "preliminar"
+        },
+        "warnings": [
+          "No es diagnóstico médico.",
+          "El escenario a 30 días no es una probabilidad ni un intervalo de confianza."
+        ]
+      }
+    }
+  ],
+  "qa_updated_at": "2026-10-06",
+  "robustness_cases": [
+    {
+      "case_id": "R01",
+      "kind": "invalid_input",
+      "description": "país no soportado",
+      "inputs": {
+        "country": "ZZ",
+        "emotionally_exhausting": "somewhat",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected_error_contains": "country"
+    },
+    {
+      "case_id": "R02",
+      "kind": "invalid_input",
+      "description": "país en minúsculas se rechaza para cumplir enum ISO del schema",
+      "inputs": {
+        "country": "us",
+        "emotionally_exhausting": "somewhat",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected_error_contains": "country"
+    },
+    {
+      "case_id": "R03",
+      "kind": "invalid_input",
+      "description": "falta un ítem requerido",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "somewhat",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes"
+      },
+      "expected_error_contains": "energy_family_friends"
+    },
+    {
+      "case_id": "R04",
+      "kind": "invalid_input",
+      "description": "categoría de grado fuera de enum",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "extreme",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected_error_contains": "emotionally_exhausting"
+    },
+    {
+      "case_id": "R05",
+      "kind": "invalid_input",
+      "description": "categoría de frecuencia fuera de enum",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "somewhat",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "daily",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected_error_contains": "worn_out_end_day"
+    },
+    {
+      "case_id": "R06",
+      "kind": "invalid_input",
+      "description": "valor nulo se rechaza",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": null,
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes"
+      },
+      "expected_error_contains": "emotionally_exhausting"
+    },
+    {
+      "case_id": "R07",
+      "kind": "invalid_input",
+      "description": "propiedad adicional se rechaza según additionalProperties=false",
+      "inputs": {
+        "country": "US",
+        "emotionally_exhausting": "somewhat",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "somewhat",
+        "worn_out_end_day": "sometimes",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "sometimes",
+        "energy_family_friends": "sometimes",
+        "sleep_hours": 7
+      },
+      "expected_error_contains": "no soportad"
+    },
+    {
+      "case_id": "R08",
+      "kind": "property",
+      "description": "el score es invariante al país para el mismo cuestionario",
+      "base_inputs": {
+        "emotionally_exhausting": "high",
+        "burned_out_due_work": "somewhat",
+        "work_frustrates": "low",
+        "worn_out_end_day": "often",
+        "exhausted_morning": "sometimes",
+        "every_working_hour_tiring": "seldom",
+        "energy_family_friends": "often"
+      },
+      "countries": [
+        "US",
+        "GB",
+        "CA",
+        "AU",
+        "BR",
+        "MX",
+        "ES"
+      ],
+      "assertion": "all_scores_equal",
+      "expected_score": 46.4286
+    },
+    {
+      "case_id": "R09",
+      "kind": "property",
+      "description": "monotonicidad ordinal: empeorar un paso cualquier ítem aumenta burden y score en 25/7 salvo topes",
+      "assertion": "single_step_delta",
+      "expected_delta": 3.5714285714285716
+    },
+    {
+      "case_id": "R10",
+      "kind": "property",
+      "description": "exhaustivo 5^7: score finito 0..100 y improve <= no_change <= worsen",
+      "assertion": "exhaustive_grid",
+      "combinations": 78125
+    }
+  ]
+}

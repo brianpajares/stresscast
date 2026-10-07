@@ -1,0 +1,13 @@
+{
+  "model_id": "stresscast_cbi_work_scenario_v1",
+  "version": "1.0.0",
+  "engine": "deterministic_cbi_work_plus_scenario_envelope",
+  "base_file": "/Apps/stresscast/base/base_stresscast.xlsx",
+  "inputs_schema": "/Apps/stresscast/model/inputs.schema.json",
+  "report_template": "/Apps/stresscast/templates/report_template.json",
+  "notes": [
+    "La app debe ejecutar lógica equivalente a engine_reference.py.",
+    "No usar un LLM para calcular score o escenarios.",
+    "No presentar el sobre de escenarios como probabilidad o intervalo de confianza."
+  ]
+}

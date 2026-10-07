@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stresscast.app/schemas/inputs.v1.json",
+  "title": "StressCast inputs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "country",
+    "emotionally_exhausting",
+    "burned_out_due_work",
+    "work_frustrates",
+    "worn_out_end_day",
+    "exhausted_morning",
+    "every_working_hour_tiring",
+    "energy_family_friends"
+  ],
+  "properties": {
+    "country": {
+      "type": "string",
+      "enum": [
+        "US",
+        "GB",
+        "CA",
+        "AU",
+        "BR",
+        "MX",
+        "ES"
+      ],
+      "default": "US",
+      "unit": "ISO 3166-1 alpha-2",
+      "help": {
+        "es": "Elige tu país para idioma, moneda y notas de evidencia; no cambia tu score.",
+        "en": "Choose your country for language, currency and evidence notes; it does not change your score.",
+        "pt": "Escolha seu país para idioma, moeda e notas de evidência; isso não altera sua pontuação."
+      },
+      "where_to_find": {
+        "es": "El país donde trabajas principalmente.",
+        "en": "The country where you mainly work.",
+        "pt": "O país onde você trabalha principalmente."
+      }
+    },
+    "emotionally_exhausting": {
+      "type": "string",
+      "enum": [
+        "very_low",
+        "low",
+        "somewhat",
+        "high",
+        "very_high"
+      ],
+      "default": "somewhat",
+      "unit": "CBI degree category",
+      "help": {
+        "es": "¿En qué grado tu trabajo resulta emocionalmente agotador?",
+        "en": "To what degree is your work emotionally exhausting?",
+        "pt": "Em que grau o seu trabalho é emocionalmente exaustivo?"
+      },
+      "where_to_find": {
+        "es": "Tu percepción habitual reciente; no necesitas documentos.",
+        "en": "Your recent usual perception; no document needed.",
+        "pt": "Sua percepção habitual recente; nenhum documento é necessário."
+      }
+    },
+    "burned_out_due_work": {
+      "type": "string",
+      "enum": [
+        "very_low",
+        "low",
+        "somewhat",
+        "high",
+        "very_high"
+      ],
+      "default": "somewhat",
+      "unit": "CBI degree category",
+      "help": {
+        "es": "¿En qué grado te sientes quemado/a a causa del trabajo?",
+        "en": "To what degree do you feel burned out because of your work?",
+        "pt": "Em que grau você se sente esgotado(a) por causa do trabalho?"
+      },
+      "where_to_find": {
+        "es": "Tu percepción habitual reciente.",
+        "en": "Your recent usual perception.",
+        "pt": "Sua percepção habitual recente."
+      }
+    },
+    "work_frustrates": {
+      "type": "string",
+      "enum": [
+        "very_low",
+        "low",
+        "somewhat",
+        "high",
+        "very_high"
+      ],
+      "default": "somewhat",
+      "unit": "CBI degree category",
+      "help": {
+        "es": "¿En qué grado tu trabajo te frustra?",
+        "en": "To what degree does your work frustrate you?",
+        "pt": "Em que grau o seu trabalho causa frustração?"
+      },
+      "where_to_find": {
+        "es": "Tu percepción habitual reciente.",
+        "en": "Your recent usual perception.",
+        "pt": "Sua percepção habitual recente."
+      }
+    },
+    "worn_out_end_day": {
+      "type": "string",
+      "enum": [
+        "never",
+        "seldom",
+        "sometimes",
+        "often",
+        "always"
+      ],
+      "default": "sometimes",
+      "unit": "CBI frequency category",
+      "help": {
+        "es": "¿Con qué frecuencia terminas agotado/a al final de la jornada?",
+        "en": "How often do you feel worn out at the end of the working day?",
+        "pt": "Com que frequência você se sente esgotado(a) ao fim do dia de trabalho?"
+      },
+      "where_to_find": {
+        "es": "Piensa en tus jornadas de trabajo recientes.",
+        "en": "Think about your recent working days.",
+        "pt": "Pense nos seus dias de trabalho recentes."
+      }
+    },
+    "exhausted_morning": {
+      "type": "string",
+      "enum": [
+        "never",
+        "seldom",
+        "sometimes",
+        "often",
+        "always"
+      ],
+      "default": "sometimes",
+      "unit": "CBI frequency category",
+      "help": {
+        "es": "¿Con qué frecuencia amaneces agotado/a al pensar en otro día de trabajo?",
+        "en": "How often are you exhausted in the morning at the thought of another day at work?",
+        "pt": "Com que frequência você acorda exausto(a) ao pensar em outro dia de trabalho?"
+      },
+      "where_to_find": {
+        "es": "Tu experiencia al comenzar el día laboral.",
+        "en": "Your experience at the start of the workday.",
+        "pt": "Sua experiência ao começar o dia de trabalho."
+      }
+    },
+    "every_working_hour_tiring": {
+      "type": "string",
+      "enum": [
+        "never",
+        "seldom",
+        "sometimes",
+        "often",
+        "always"
+      ],
+      "default": "sometimes",
+      "unit": "CBI frequency category",
+      "help": {
+        "es": "¿Con qué frecuencia sientes que cada hora de trabajo es agotadora?",
+        "en": "How often do you feel that every working hour is tiring for you?",
+        "pt": "Com que frequência você sente que cada hora de trabalho é cansativa?"
+      },
+      "where_to_find": {
+        "es": "Tu percepción durante la jornada.",
+        "en": "Your perception during the workday.",
+        "pt": "Sua percepção durante a jornada."
+      }
+    },
+    "energy_family_friends": {
+      "type": "string",
+      "enum": [
+        "never",
+        "seldom",
+        "sometimes",
+        "often",
+        "always"
+      ],
+      "default": "sometimes",
+      "unit": "CBI frequency category (reverse-scored)",
+      "help": {
+        "es": "¿Con qué frecuencia tienes suficiente energía para familia y amigos durante el tiempo libre? Este ítem se puntúa al revés.",
+        "en": "How often do you have enough energy for family and friends during leisure time? This item is reverse-scored.",
+        "pt": "Com que frequência você tem energia suficiente para família e amigos no tempo livre? Este item tem pontuação invertida."
+      },
+      "where_to_find": {
+        "es": "Tu experiencia fuera del horario laboral.",
+        "en": "Your experience outside working hours.",
+        "pt": "Sua experiência fora do horário de trabalho."
+      }
+    }
+  },
+  "x-validation": {
+    "cross_field": [
+      "Los siete ítems CBI deben estar presentes; no se calcula score con faltantes en la app v1.",
+      "country solo selecciona localización/precio; nunca cambia el score."
+    ],
+    "metric_imperial_conversion": "No aplica: no hay magnitudes físicas en el modelo v1."
+  }
+}

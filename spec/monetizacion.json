@@ -1,0 +1,154 @@
+{
+  "version": "1.1.0",
+  "phase1_validation": {
+    "payment": false,
+    "cta": {
+      "es": "Recibe tu informe completo",
+      "en": "Get your full report",
+      "pt": "Receba seu relatório completo"
+    },
+    "fields": [
+      "email",
+      "explicit_report_consent"
+    ],
+    "owner_copy": "Sí, solo en MONETIZATION_MODE=validation y como parte del flujo manual de cumplimiento: OWNER_EMAIL recibe el id de solicitud, inputs, resultados y PDF completo. La pantalla de consentimiento debe informar esta transferencia al operador. En modo stripe, la entrega es automática al usuario y se envía al dueño una copia operativa.",
+    "privacy": "Separar consentimiento necesario para generar/entregar el informe de marketing. En validation, el consentimiento de entrega informa que el operador revisará una copia individual para el cumplimiento manual. Nunca enviar respuestas/score a analítica de terceros. Investigación longitudinal requiere consentimiento separado.",
+    "metrics": [
+      {
+        "metric": "start_to_preview",
+        "threshold": ">=65%",
+        "source": "brief etapa 1"
+      },
+      {
+        "metric": "preview_to_report_request",
+        "threshold": ">=35%",
+        "source": "brief etapa 1"
+      },
+      {
+        "metric": "minimum_preview_completions",
+        "threshold": ">=300",
+        "source": "supuesto interno de validación"
+      },
+      {
+        "metric": "minimum_report_requests",
+        "threshold": ">=100",
+        "source": "supuesto interno de validación"
+      }
+    ],
+    "activate_payment_when": "En una ventana de hasta 30 días: >=300 previews, >=100 solicitudes de informe y preview_to_report_request >=35%, sin incidentes críticos de privacidad/QA.",
+    "data_minimization": {
+      "before_email_gate": "0 PII; respuestas se mantienen en sesión/cliente siempre que la arquitectura lo permita.",
+      "report_delivery": "email + payload mínimo para generar/entregar el informe.",
+      "operator_default": "En validation, copia individual estrictamente limitada al flujo manual de informe y OWNER_EMAIL; sin uso para decisiones laborales, marketing o analítica. En stripe, minimizar a metadatos operativos salvo copia de entrega.",
+      "research_future": "solo con consentimiento separado, propósito explícito, pseudonimización y retención definida."
+    }
+  },
+  "phase2_payment": {
+    "anchor_usd": 9.9,
+    "ppp_indicator": "World Bank PA.NUS.PRVT.PP, 2025",
+    "pricing_method": "precio_PPP_bruto = 9.90 * factor_PPP_consumo_privado; después redondeo psicológico local definido por producto.",
+    "prices": [
+      {
+        "country": "US",
+        "name": "United States",
+        "currency": "USD",
+        "ppp_factor_2025": 1.0,
+        "ppp_raw": 9.9,
+        "recommended_price": 9.9,
+        "status": "hipótesis de precio; factor PPP verificado"
+      },
+      {
+        "country": "GB",
+        "name": "United Kingdom",
+        "currency": "GBP",
+        "ppp_factor_2025": 0.7,
+        "ppp_raw": 6.93,
+        "recommended_price": 6.9,
+        "status": "hipótesis de precio; factor PPP verificado"
+      },
+      {
+        "country": "CA",
+        "name": "Canada",
+        "currency": "CAD",
+        "ppp_factor_2025": 1.26,
+        "ppp_raw": 12.47,
+        "recommended_price": 12.9,
+        "status": "hipótesis de precio; factor PPP verificado"
+      },
+      {
+        "country": "AU",
+        "name": "Australia",
+        "currency": "AUD",
+        "ppp_factor_2025": 1.46,
+        "ppp_raw": 14.45,
+        "recommended_price": 14.9,
+        "status": "hipótesis de precio; factor PPP verificado"
+      },
+      {
+        "country": "BR",
+        "name": "Brazil",
+        "currency": "BRL",
+        "ppp_factor_2025": 2.58,
+        "ppp_raw": 25.54,
+        "recommended_price": 25.9,
+        "status": "hipótesis de precio; factor PPP verificado"
+      },
+      {
+        "country": "MX",
+        "name": "Mexico",
+        "currency": "MXN",
+        "ppp_factor_2025": 11.31,
+        "ppp_raw": 111.97,
+        "recommended_price": 109.0,
+        "status": "hipótesis de precio; factor PPP verificado"
+      },
+      {
+        "country": "ES",
+        "name": "Spain",
+        "currency": "EUR",
+        "ppp_factor_2025": 0.61,
+        "ppp_raw": 6.04,
+        "recommended_price": 5.9,
+        "status": "hipótesis de precio; factor PPP verificado"
+      }
+    ],
+    "bundles": [
+      {
+        "name": "3 reports / 90 days",
+        "price_rule": "2.4x precio individual",
+        "status": "hipótesis"
+      },
+      {
+        "name": "couple/founder pair",
+        "price_rule": "1.8x precio individual",
+        "status": "hipótesis; no comparar personas entre sí"
+      }
+    ],
+    "upsells": [
+      "re-check a 7–14 días",
+      "pack 3 evaluaciones/90 días",
+      "suscripción mensual solo tras prueba de recurrencia"
+    ],
+    "subscription": {
+      "enabled": false,
+      "activation_rule": "activar solo si >=25% de compradores repite check-in dentro de 45 días"
+    },
+    "affiliate": "No en v1; evitar conflicto de interés con proveedores de salud/terapia."
+  },
+  "unit_economics": {
+    "variable_cost_budget_usd_per_report": 0.5,
+    "cost_status": "supuesto interno de techo presupuestario, no cotización de proveedor",
+    "includes": "infra, email/PDF y margen de seguridad operativo; no incluye CAC ni impuestos",
+    "us_price": 9.9,
+    "gross_margin_at_budget_ceiling_pct": 94.9
+  },
+  "payment_kill_threshold": "Si report_request_to_payment <5% después de >=200 oportunidades reales de compra, pausar adquisición pagada y revisar oferta/precio.",
+  "source_ppp": "https://data.worldbank.org/indicator/PA.NUS.PRVT.PP",
+  "factory_mode": {
+    "env": "MONETIZATION_MODE",
+    "default": "validation",
+    "validation": "preview gratis -> email+consentimiento -> lead -> confirmación usuario -> copia operativa completa a OWNER_EMAIL",
+    "stripe": "checkout -> webhook firmado/idempotente -> PDF automático al usuario -> copia operativa al dueño",
+    "privacy_note": "Cambio de Agente 4 respecto a la preferencia de QA3: la copia al operador se hace explícita en consentimiento y queda restringida al cumplimiento manual."
+  }
+}

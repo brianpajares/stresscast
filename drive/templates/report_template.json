@@ -1,0 +1,112 @@
+{
+  "version": "1.1.0",
+  "template_id": "stresscast_full_report_v1",
+  "languages": [
+    "es",
+    "en",
+    "pt"
+  ],
+  "sections": [
+    {
+      "id": "cover",
+      "access": "INFORME_COMPLETO",
+      "title": {
+        "es": "Tu StressCast",
+        "en": "Your StressCast",
+        "pt": "Seu StressCast"
+      },
+      "fields": [
+        "work_burnout_score",
+        "reference_band",
+        "generated_at"
+      ]
+    },
+    {
+      "id": "where_you_are",
+      "access": "GRATIS",
+      "title": {
+        "es": "Dónde estás hoy",
+        "en": "Where you are today",
+        "pt": "Onde você está hoje"
+      },
+      "fields": [
+        "work_burnout_score",
+        "reference_band",
+        "top_driver_1",
+        "mini_chart"
+      ]
+    },
+    {
+      "id": "scenarios_30d",
+      "access": "INFORME_COMPLETO",
+      "title": {
+        "es": "Tres escenarios a 30 días",
+        "en": "Three 30-day scenarios",
+        "pt": "Três cenários em 30 dias"
+      },
+      "fields": [
+        "scenario_improve_30d",
+        "scenario_no_change_30d",
+        "scenario_worsen_30d",
+        "scenario_envelope"
+      ],
+      "required_disclaimer": {
+        "es": "Son escenarios condicionales what-if, no predicciones, probabilidades ni intervalos de confianza.",
+        "en": "These are conditional what-if scenarios, not predictions, probabilities or confidence intervals.",
+        "pt": "São cenários condicionais what-if, não previsões, probabilidades ou intervalos de confiança."
+      }
+    },
+    {
+      "id": "drivers",
+      "access": "INFORME_COMPLETO",
+      "title": {
+        "es": "Qué mueve tu resultado",
+        "en": "What drives your result",
+        "pt": "O que move seu resultado"
+      },
+      "fields": [
+        "top_drivers_3",
+        "sensitivity",
+        "puma_comparison"
+      ]
+    },
+    {
+      "id": "plan",
+      "access": "INFORME_COMPLETO",
+      "title": {
+        "es": "Plan de 7 días",
+        "en": "7-day plan",
+        "pt": "Plano de 7 dias"
+      },
+      "fields": [
+        "action_plan_7d"
+      ],
+      "rule": "Narrativa accionable generada solo desde drivers estructurados; no inventar causalidad."
+    },
+    {
+      "id": "method",
+      "access": "INFORME_COMPLETO",
+      "title": {
+        "es": "Cómo funciona",
+        "en": "How it works",
+        "pt": "Como funciona"
+      },
+      "fields": [
+        "methodology",
+        "sources",
+        "limitations"
+      ]
+    }
+  ],
+  "privacy": {
+    "exclude": [
+      "diagnoses",
+      "employer_decisions",
+      "biometrics",
+      "owner_copy_of_individual_answers_or_report"
+    ],
+    "report_delivery_requires": "explicit_report_consent",
+    "marketing_requires": "separate_optional_consent",
+    "owner_default": "aggregate funnel/technical telemetry only; no individual answers, score or PDF"
+  }
+}

@@ -1,0 +1,658 @@
+{
+  "meta": {
+    "appName": "StressCast",
+    "tagline": "Meça seu esgotamento no trabalho. Explore o que pode mudar.",
+    "title": "StressCast · Check de esgotamento no trabalho baseado no CBI",
+    "description": "Um check de esgotamento no trabalho de 60–90 segundos baseado no Copenhagen Burnout Inventory. Pontuação atual de 0–100, referência contextual e cenários what-if transparentes. Não é diagnóstico nem previsão.",
+    "howTitle": "Como o StressCast funciona",
+    "howDescription": "A fórmula, os sete itens do CBI, a pontuação invertida, a referência PUMA e os limites dos cenários what-if: tudo auditável.",
+    "faqTitle": "Perguntas frequentes",
+    "faqDescription": "Respostas sobre o método, a privacidade, a referência PUMA e o que um autocheck pode e não pode dizer.",
+    "sourcesTitle": "Fontes e licenças",
+    "sourcesDescription": "A pesquisa e as fontes públicas por trás do StressCast: CBI e PUMA do NFA, validações em espanhol e português brasileiro, OMS.",
+    "privacyTitle": "Política de privacidade",
+    "termsTitle": "Termos de uso",
+    "disclaimerTitle": "Aviso de bem-estar",
+    "privacyRequestTitle": "Acesso, correção ou exclusão dos seus dados",
+    "assessmentTitle": "Seu check",
+    "previewTitle": "Seu resultado atual",
+    "requestTitle": "Receba seu relatório completo",
+    "successTitle": "Seu relatório",
+    "reportTitle": "Seu relatório StressCast",
+    "notFoundTitle": "Página não encontrada",
+    "errorTitle": "Algo deu errado"
+  },
+  "common": {
+    "skipToContent": "Ir para o conteúdo",
+    "language": "Idioma",
+    "theme": "Tema",
+    "themeLight": "Claro",
+    "themeDark": "Escuro",
+    "themeSystem": "Sistema",
+    "back": "Voltar",
+    "continue": "Continuar",
+    "exit": "Sair",
+    "retry": "Tentar novamente",
+    "close": "Fechar",
+    "loading": "Carregando",
+    "optional": "Opcional",
+    "required": "Obrigatório",
+    "learnMore": "Saiba mais",
+    "openInNewTab": "(abre em uma nova aba)",
+    "home": "Início",
+    "mainNavigation": "Navegação principal",
+    "footerNavigation": "Navegação do rodapé",
+    "externalLink": "Link externo",
+    "illustrativeOnly": "Ilustrativo"
+  },
+  "nav": {
+    "howItWorks": "Como funciona",
+    "faq": "Perguntas frequentes",
+    "sources": "Fontes",
+    "privacy": "Privacidade",
+    "terms": "Termos",
+    "disclaimer": "Aviso de bem-estar",
+    "privacyRequest": "Seus direitos sobre seus dados",
+    "start": "Começar meu check"
+  },
+  "footer": {
+    "tagline": "Um autocheck transparente de esgotamento no trabalho baseado no Copenhagen Burnout Inventory.",
+    "builtOn": "Instrumento: CBI Work-related (NFA, Dinamarca). Referência: PUMA. Modelo {version}.",
+    "translationNotice": "O texto do questionário em espanhol e português é preliminar até ser cotejado com versões validadas.",
+    "analyticsPrefs": "Preferências de analytics",
+    "rights": "© {year} StressCast. Todos os direitos reservados."
+  },
+  "consent": {
+    "title": "Medição de uso anônima",
+    "body": "Contamos etapas do fluxo (por exemplo, “começou” ou “viu a prévia”) para melhorar o StressCast. Nunca enviamos suas respostas, pontuação ou email para analytics. Você permite?",
+    "accept": "Permitir",
+    "decline": "Não, obrigado",
+    "manageLabel": "Preferências de analytics",
+    "saved": "Preferência salva."
+  },
+  "landing": {
+    "eyebrow": "Check de esgotamento no trabalho · ~60–90 s",
+    "headline": "Veja quanto esgotamento relacionado ao trabalho você está carregando agora.",
+    "body": "Responda a 7 perguntas do Copenhagen Burnout Inventory. Você receberá uma pontuação atual de 0–100, uma referência contextual e um relatório com cenários condicionais. Não é diagnóstico nem previsão.",
+    "cta": "Começar meu check",
+    "trust": "Cálculo auditável · 7 itens CBI · Sem biometria · Sem dados pessoais antes do relatório",
+    "secondaryCta": "Ver como funciona",
+    "exampleLabel": "Exemplo ilustrativo — não é um resultado real",
+    "exampleScoreLabel": "Esgotamento relacionado ao trabalho",
+    "exampleReference": "Referência PUMA 50",
+    "exampleYou": "Exemplo",
+    "stepsTitle": "Da pergunta ao resultado em três passos",
+    "steps": {
+      "one": {
+        "title": "Responda a 7 perguntas",
+        "body": "Sete itens Work-related do Copenhagen Burnout Inventory, um por tela. Cerca de 60–90 segundos."
+      },
+      "two": {
+        "title": "Veja sua pontuação atual",
+        "body": "Uma pontuação transparente de 0–100, uma referência contextual e seu principal driver. Sem precisar de email."
+      },
+      "three": {
+        "title": "Explore cenários what-if",
+        "body": "Peça o relatório completo para ver cenários condicionais, seus 3 principais drivers, um plano de 7 dias e toda a metodologia."
+      }
+    },
+    "valueTitle": "O que você recebe",
+    "free": {
+      "title": "Prévia gratuita",
+      "badge": "Sem email",
+      "items": [
+        "Sua pontuação atual de esgotamento no trabalho (0–100)",
+        "Onde ela fica em relação à referência PUMA",
+        "Seu principal driver",
+        "Uma ação para esta semana"
+      ]
+    },
+    "full": {
+      "title": "Relatório completo",
+      "badge": "Grátis durante a validação",
+      "items": [
+        "Cenários condicionais de melhora / sem mudança / piora",
+        "Top 3 drivers e sensibilidade",
+        "Benchmark contextual (PUMA)",
+        "Plano de 7 dias",
+        "Metodologia, premissas e fontes",
+        "Link privado e PDF"
+      ]
+    },
+    "principlesTitle": "Feito para ser verificado, não para ser aceito às cegas",
+    "principles": {
+      "math": {
+        "title": "Matemática determinística",
+        "body": "Nenhuma IA generativa produz o seu número. Cada passo pode ser reproduzido com uma calculadora."
+      },
+      "context": {
+        "title": "Contexto sem dramatizar",
+        "body": "A referência PUMA descreve trabalhadores de serviços humanos na Dinamarca. Ela aparece como contexto, nunca como limite de doença."
+      },
+      "scenarios": {
+        "title": "Cenários para pensar",
+        "body": "Aritmética what-if, não uma previsão. Nunca a transformamos em probabilidade."
+      },
+      "privacy": {
+        "title": "Privacidade em primeiro lugar",
+        "body": "Sem dados pessoais antes do relatório. Suas respostas nunca vão para analytics de terceiros."
+      }
+    },
+    "evidenceTitle": "De onde vem o método",
+    "evidenceBody": "A subescala de esgotamento relacionado ao trabalho do Copenhagen Burnout Inventory (CBI) foi desenvolvida pelo Centro Nacional de Pesquisa do Ambiente de Trabalho da Dinamarca (NFA). Existem validações publicadas em espanhol e em português brasileiro. A Organização Mundial da Saúde descreve o burnout como um fenômeno ocupacional, e não como uma condição médica.",
+    "evidenceLink": "Leia a metodologia completa",
+    "faqTitle": "O que as pessoas perguntam antes de começar",
+    "faqMore": "Ver todas as perguntas",
+    "faq": {
+      "diagnosis": {
+        "q": "Isto é um diagnóstico?",
+        "a": "Não. O StressCast é uma ferramenta de reflexão sobre bem-estar no trabalho. Não diagnostica, trata nem substitui um profissional qualificado."
+      },
+      "scenario": {
+        "q": "O que significa o cenário de 30 dias?",
+        "a": "É um what-if matemático: qual seria sua pontuação se até dois dos seus itens mudassem uma categoria de resposta. Não é uma previsão, uma probabilidade nem um intervalo de confiança."
+      },
+      "denmark": {
+        "q": "Por que a referência menciona a Dinamarca?",
+        "a": "Os valores de referência (média de 33,0 e 50 como marca de referência alta) vêm do PUMA, um estudo dinamarquês com trabalhadores de serviços humanos. São contexto, não uma norma global."
+      },
+      "email": {
+        "q": "Preciso do meu email para ver minha pontuação?",
+        "a": "Não. Você vê sua pontuação, a referência e seu principal driver sem nenhum dado pessoal. O email só é necessário para receber o relatório completo."
+      },
+      "data": {
+        "q": "Quem vê as minhas respostas?",
+        "a": "Antes da etapa do relatório, suas respostas ficam na sessão do seu navegador. Quando você pede o relatório, elas são guardadas para gerá-lo e entregá-lo. Durante a validação, uma cópia também é enviada ao operador do StressCast para revisar manualmente a entrega. Nada é enviado para analytics de terceiros."
+      },
+      "employer": {
+        "q": "Um empregador pode usar isto?",
+        "a": "O StressCast não foi projetado para decisões de emprego, e usá-lo para avaliar outra pessoa está fora do seu propósito. Não existem painéis para empregadores com resultados individuais."
+      },
+      "accuracy": {
+        "q": "Qual é a confiabilidade?",
+        "a": "A aritmética é exata e reproduzível. O questionário é autorrelatado, então o resultado depende do contexto e do momento. Uma medição é uma foto, não um destino."
+      }
+    },
+    "finalTitle": "Pronto para um check de 90 segundos?",
+    "finalBody": "Sem conta, sem email, sem biometria. Apenas sete perguntas e um resultado transparente."
+  },
+  "country": {
+    "title": "Onde você trabalha principalmente?",
+    "help": "Isso só ajusta idioma, moeda e notas de evidência. Não altera sua pontuação.",
+    "cta": "Continuar",
+    "label": "País",
+    "placeholder": "Selecione seu país",
+    "suggested": "Sugerido pelas configurações do seu navegador — confirme.",
+    "required": "Escolha um país para continuar."
+  },
+  "questions": {
+    "emotionally_exhausting": "Em que grau o seu trabalho é emocionalmente exaustivo?",
+    "burned_out_due_work": "Em que grau você se sente esgotado(a) por causa do trabalho?",
+    "work_frustrates": "Em que grau o seu trabalho causa frustração?",
+    "worn_out_end_day": "Com que frequência você se sente esgotado(a) ao fim do dia de trabalho?",
+    "exhausted_morning": "Com que frequência você acorda exausto(a) ao pensar em outro dia de trabalho?",
+    "every_working_hour_tiring": "Com que frequência você sente que cada hora de trabalho é cansativa?",
+    "energy_family_friends": "Com que frequência você tem energia suficiente para família e amigos no tempo livre?"
+  },
+  "degree": {
+    "very_low": "Em grau muito baixo",
+    "low": "Em grau baixo",
+    "somewhat": "Um pouco",
+    "high": "Em grau alto",
+    "very_high": "Em grau muito alto"
+  },
+  "frequency": {
+    "never": "Nunca / quase nunca",
+    "seldom": "Raramente",
+    "sometimes": "Às vezes",
+    "often": "Frequentemente",
+    "always": "Sempre / quase sempre"
+  },
+  "assessment": {
+    "progress": "Pergunta {current} de 8",
+    "back": "Voltar",
+    "next": "Continuar",
+    "required": "Escolha uma opção para continuar.",
+    "privacy": "Suas respostas não são enviadas para analytics de terceiros.",
+    "whyTitle": "Por que perguntamos isto?",
+    "whyItem": "Este é um dos sete itens Work-related do Copenhagen Burnout Inventory. Não há respostas certas ou erradas: escolha o que melhor reflete a sua experiência habitual recente.",
+    "whyCountry": "O país só altera idioma, moeda e notas de evidência. Nunca altera sua pontuação.",
+    "translationPreliminary": "Tradução preliminar",
+    "restored": "Recuperamos suas respostas desta sessão.",
+    "calcError": "Não conseguimos calcular seu resultado. Suas respostas continuam aqui.",
+    "keyboardHint": "Dica: pressione 1–5 para escolher e Enter para continuar.",
+    "optionsLabel": "Opções de resposta",
+    "progressLabel": "Progresso do check",
+    "reverseHint": "Item de pontuação invertida: mais energia reduz sua pontuação."
+  },
+  "processing": {
+    "title": "Calculando sua pontuação",
+    "steps": [
+      "Aplicando a escala CBI",
+      "Comparando com a referência PUMA",
+      "Preparando sua prévia"
+    ],
+    "note": "O cálculo é determinístico; IA generativa não produz o número.",
+    "missing": "Não encontramos suas respostas nesta sessão.",
+    "restart": "Começar de novo"
+  },
+  "preview": {
+    "eyebrow": "Seu resultado atual",
+    "score_label": "Esgotamento relacionado ao trabalho",
+    "above": "Sua pontuação está igual ou acima do limiar de referência PUMA de 50.",
+    "below": "Sua pontuação está abaixo do limiar de referência PUMA de 50.",
+    "context": "PUMA: trabalhadores de serviços humanos na Dinamarca. Referência contextual, não norma global nem diagnóstico.",
+    "driver": "Seu principal driver agora",
+    "action": "Uma ação para esta semana",
+    "action_body": "Escolha uma mudança pequena e observável ligada ao principal driver e repita o check depois; não trate uma única medição como destino.",
+    "locked_title": "O que poderia mudar se suas respostas mudassem",
+    "locked_body": "O relatório mostra cenários condicionais de melhora / sem mudança / piora. São what-if matemáticos, não previsões.",
+    "cta": "Receber meu relatório completo",
+    "outOf": "de 100",
+    "scoreAria": "Pontuação de esgotamento relacionado ao trabalho: {score} de 100. Referência contextual PUMA: 50.",
+    "referenceMark": "Referência PUMA 50",
+    "youMark": "Você",
+    "bandBelowShort": "Abaixo da referência PUMA",
+    "bandAboveShort": "Igual ou acima da referência PUMA",
+    "driverHelp": "O item com maior carga nas suas respostas. Não prova causalidade.",
+    "scenarioImprove": "Melhora condicional",
+    "scenarioNoChange": "Sem mudança",
+    "scenarioWorsen": "Piora condicional",
+    "whatIfBadge": "What-if · não é previsão",
+    "lockedValue": "— —",
+    "lockedCaption": "Se até 2 drivers mudarem 1 categoria",
+    "lockedBadge": "No relatório completo",
+    "unlocks": [
+      "Cenários condicionais",
+      "Top 3 drivers",
+      "Benchmark contextual",
+      "Plano de 7 dias",
+      "Metodologia"
+    ],
+    "ctaBenefit": "Cenários + top 3 drivers + plano de 7 dias + metodologia.",
+    "free": "Grátis durante a validação",
+    "methodLink": "Como é calculado",
+    "retake": "Começar de novo",
+    "fallbackScore": "Sua pontuação: {score} de 100."
+  },
+  "request": {
+    "title": "Receba o relatório completo grátis",
+    "body": "Enviaremos cenários what-if, top 3 drivers, benchmark contextual, plano de 7 dias e metodologia.",
+    "email": "Email",
+    "email_placeholder": "voce@exemplo.com",
+    "consent": "Concordo em usar meu email para gerar e entregar este relatório.",
+    "marketing": "Quero receber novidades do StressCast. Opcional.",
+    "privacy": "Na fase de validação, uma cópia das suas respostas, resultado e PDF é enviada ao operador do StressCast para revisar e concluir manualmente a entrega. Não é usada para decisões de emprego nem analytics de terceiros.",
+    "cta": "Enviar meu relatório",
+    "invalid_email": "Digite um email válido.",
+    "consent_required": "Precisamos do consentimento de entrega para enviar seu relatório.",
+    "emailHint": "Usado apenas para entregar este relatório.",
+    "privacyLink": "Política de privacidade",
+    "submitting": "Enviando…",
+    "deliveryError": "Não conseguimos enviar o link. Confira seu email ou tente novamente.",
+    "rateLimited": "Muitas tentativas. Aguarde um minuto e tente novamente.",
+    "turnstileRequired": "Conclua a verificação de segurança.",
+    "turnstileError": "A verificação de segurança não carregou. Recarregue a página e tente novamente.",
+    "back": "Voltar ao meu resultado",
+    "demoNotice": "Modo demonstração: o envio de email não está configurado nesta implantação, então você verá seu relatório aqui mesmo.",
+    "missing": "Não encontramos seu resultado nesta sessão.",
+    "restart": "Começar um novo check",
+    "disclosureTitle": "Antes de enviar",
+    "securedBy": "Protegido por Cloudflare Turnstile"
+  },
+  "checkout": {
+    "title": "Receba seu relatório completo",
+    "body": "Pagamento único. Você recebe o mesmo relatório completo e o PDF.",
+    "price": "Preço",
+    "pay": "Continuar para o pagamento seguro",
+    "taxNote": "Podem incidir impostos conforme o seu país.",
+    "error": "Não conseguimos iniciar o pagamento. Tente novamente.",
+    "cancelled": "Pagamento cancelado. Você pode tentar de novo quando quiser.",
+    "unavailable": "Os pagamentos não estão disponíveis no momento."
+  },
+  "success": {
+    "title": "Seu relatório está pronto",
+    "bodyEmail": "Enviamos um link privado para o seu email. Pode levar um minuto para chegar; confira a pasta de spam se não o encontrar.",
+    "bodyPending": "Recebemos seu pedido. O email ainda não pôde ser enviado, então o deixamos pronto para reenvio. Você já pode abrir seu relatório.",
+    "bodyDemo": "Modo demonstração: nenhum email foi enviado. Você pode abrir seu relatório aqui mesmo.",
+    "cta": "Abrir meu relatório",
+    "linkNote": "O link é privado. Qualquer pessoa que o tenha pode abrir o relatório, então evite compartilhá-lo.",
+    "again": "Começar um novo check",
+    "missing": "Não encontramos um pedido recente nesta sessão."
+  },
+  "report": {
+    "title": "Seu relatório StressCast",
+    "current": "Pontuação atual",
+    "scenarios": "Cenários condicionais em 30 dias",
+    "scenario_note": "Se até dois drivers mudarem uma categoria. Não representa probabilidade, previsão ou intervalo de confiança.",
+    "drivers": "Top 3 drivers",
+    "benchmark": "Referência contextual",
+    "plan": "Plano de 7 dias",
+    "method": "Metodologia e premissas",
+    "download": "Baixar PDF",
+    "id": "ID de verificação",
+    "coverTitle": "Seu relatório de esgotamento relacionado ao trabalho",
+    "generatedOn": "Gerado em {date}",
+    "modelVersion": "Modelo {version}",
+    "currentIntro": "Esta é a sua pontuação atual de esgotamento relacionado ao trabalho, autorrelatada, em uma escala de 0–100.",
+    "scenarioImprove": "Melhora condicional",
+    "scenarioNoChange": "Sem mudança",
+    "scenarioWorsen": "Piora condicional",
+    "whatIfBadge": "What-if · não é previsão",
+    "scenarioSubtitle": "What-if matemático: se até dois drivers elegíveis mudarem uma categoria.",
+    "scenarioFooter": "Não é uma previsão, probabilidade, intervalo de confiança nem mudança esperada.",
+    "scenarioRange": "Faixa de cenários: {low} – {high}",
+    "kTitle": "Itens que se supõe que mudem",
+    "kImprove": "Melhora: {k, plural, =0 {nenhum item elegível} one {# item} other {# itens}}",
+    "kWorsen": "Piora: {k, plural, =0 {nenhum item elegível} one {# item} other {# itens}}",
+    "sensitivityTitle": "Sensibilidade",
+    "sensitivityBody": "Um item mudando uma categoria de resposta altera sua média em 25/7 = {one} pontos; dois itens a movem {two} pontos. Aplicam-se os limites de 0 e 100.",
+    "burdenPoints": "{points} / 100 de carga",
+    "driverNote": "São os itens com maior carga nas suas respostas. Não provam causalidade.",
+    "reverseNote": "Item de pontuação invertida: pouca energia para família e amigos soma carga.",
+    "suggestion": "Um pequeno experimento para testar",
+    "pumaBody": "Referência PUMA (trabalhadores de serviços humanos na Dinamarca): média {mean}, DP {sd}, N = {n}; {share} obteve 50 ou mais; alfa de Cronbach {alpha}.",
+    "deltaAbove": "Sua pontuação está {points} pontos acima da média PUMA de {mean}.",
+    "deltaBelow": "Sua pontuação está {points} pontos abaixo da média PUMA de {mean}.",
+    "deltaEqual": "Sua pontuação é igual à média PUMA de {mean}.",
+    "contextBanner": "Contexto, não norma",
+    "validityNote": "Estudos em espanhol e português brasileiro sustentam a confiabilidade do instrumento nesses idiomas, mas não transformam os valores de referência dinamarqueses em normas globais.",
+    "planStep1Title": "Observar",
+    "planStep1Body": "Perceba quando o seu principal driver («{driver}») aparece com mais força. Durante três dias, anote a hora, a tarefa e as pessoas envolvidas.",
+    "planStep2Title": "Mudar uma pequena condição",
+    "planStep2Body": "Escolha uma mudança pequena e reversível ligada a esse driver (veja a sugestão acima). Mantenha todo o resto igual.",
+    "planStep3Title": "Revisar",
+    "planStep3Body": "Depois de alguns dias de contexto estável, repita o check e compare consigo mesmo(a), não com uma norma clínica.",
+    "planNoticeTitle": "O que notar",
+    "planNoticeBody": "Quando, onde e com quem o seu principal driver é mais forte.",
+    "planTryTitle": "O que testar",
+    "planTryBody": "Uma mudança pequena e reversível relacionada a esse driver.",
+    "planUsefulTitle": "Como saber se ajudou",
+    "planUsefulBody": "Suas próprias anotações parecem diferentes, ou um novo check se move na direção que você esperava. Qualquer um dos dois é apenas um sinal.",
+    "planDontTitle": "O que não concluir de uma única medição",
+    "planDontBody": "Uma única pontuação é uma foto. Ela não mostra uma tendência, uma causa nem uma condição.",
+    "methodTable": {
+      "instrument": { "k": "Instrumento", "v": "CBI Work-related, 7 itens" },
+      "scoring": { "k": "Pontuação", "v": "0 / 25 / 50 / 75 / 100 por item" },
+      "reverse": { "k": "Pontuação invertida", "v": "WB7 (energia para família e amigos)" },
+      "score": { "k": "Pontuação", "v": "Média dos 7 burden scores" },
+      "reference": { "k": "Referência alta", "v": "50 ou mais (PUMA, contextual)" },
+      "scenario": { "k": "Cenário", "v": "Até 2 itens × 1 categoria" },
+      "nature": { "k": "Natureza do cenário", "v": "Sensibilidade determinística" },
+      "predictive": { "k": "Modelo preditivo em 30 dias", "v": "Não" },
+      "model": { "k": "Versão do modelo", "v": "{version}" }
+    },
+    "formulaTitle": "Fórmula",
+    "formulaBody": "Pontuação S = (p₁ + … + p₇) / 7, onde cada p é 0, 25, 50, 75 ou 100 e p₇ = 100 − a pontuação direta. Melhora = max(0, S − k·25/7); piora = min(100, S + k·25/7), com k até 2.",
+    "limitationsTitle": "Limites",
+    "limitations": [
+      "Respostas autorrelatadas variam conforme o momento e o contexto.",
+      "O texto em espanhol e português é preliminar até ser cotejado com versões validadas.",
+      "O PUMA é uma amostra dinamarquesa de serviços humanos, não uma norma global.",
+      "Sem afirmações causais: os drivers mostram carga, não causas.",
+      "Os cenários são aritmética what-if, não previsões validadas."
+    ],
+    "sourcesTitle": "Fontes",
+    "privacyTitle": "Resumo de privacidade",
+    "privacyBody": "Usado apenas para entregar este relatório. Durante a validação, uma cópia vai para o operador do StressCast para revisar manualmente a entrega. Respostas e pontuação nunca são enviadas para analytics.",
+    "verificationNote": "Este ID identifica uma emissão do relatório, não uma pessoa.",
+    "expired": "Este link expirou.",
+    "denied": "Este link não é válido.",
+    "backHome": "Voltar ao início",
+    "pdfFilename": "StressCast-relatorio",
+    "pdfDocumentTitle": "Relatório StressCast",
+    "pageOf": "Página {page} de {total}",
+    "freeOutputs": "Onde você está hoje"
+  },
+  "items": {
+    "emotionally_exhausting": {
+      "name": "Exaustão emocional no trabalho",
+      "action": "Perceba quais tarefas ou interações mais esgotam você e tente separar uma delas do resto do seu dia por uma semana."
+    },
+    "burned_out_due_work": {
+      "name": "Sentir-se esgotado(a) por causa do trabalho",
+      "action": "Durante três dias, anote quando você se sente mais esgotado(a); procure uma condição que você poderia mudar um pouco (horário, escopo ou quem participa)."
+    },
+    "work_frustrates": {
+      "name": "Frustração com o trabalho",
+      "action": "Liste a principal frustração desta semana e escolha um passo pequeno e reversível: esclarecer uma expectativa, agrupar uma tarefa ou fazer uma pergunta."
+    },
+    "worn_out_end_day": {
+      "name": "Sentir-se esgotado(a) ao fim do dia",
+      "action": "Experimente uma pausa protegida de 10 minutos no meio do dia e anote como você se sente ao fim da jornada."
+    },
+    "exhausted_morning": {
+      "name": "Acordar exausto(a) ao pensar no trabalho",
+      "action": "Observe sua rotina da noite anterior e os primeiros 30 minutos da manhã; teste uma pequena mudança e veja o que acontece."
+    },
+    "every_working_hour_tiring": {
+      "name": "Sentir que cada hora de trabalho é cansativa",
+      "action": "Registre as duas ou três horas mais cansativas e teste mudar a ordem, a duração ou as interrupções delas."
+    },
+    "energy_family_friends": {
+      "name": "Pouca energia para família e amigos (pontuação invertida)",
+      "action": "Proteja um pequeno espaço depois do trabalho com uma transição suave, como uma caminhada curta ou música, e anote sua energia depois."
+    }
+  },
+  "sources": {
+    "intro": "O StressCast se apoia em instrumentos públicos e pesquisa aberta. Resumimos as licenças; nunca copiamos conteúdo protegido.",
+    "items": {
+      "cbi": "Centro Nacional de Pesquisa do Ambiente de Trabalho (NFA, Dinamarca) — escalas do Copenhagen Burnout Inventory",
+      "norms": "NFA — CBI primeira edição: valores de referência PUMA para esgotamento relacionado ao trabalho",
+      "original": "Kristensen et al. (2005) — The Copenhagen Burnout Inventory, Work & Stress",
+      "es": "Validação espanhola do CBI (2013)",
+      "pt": "Validação brasileira em português do CBI em profissionais de saúde (2023)",
+      "who": "Organização Mundial da Saúde — Burn-out: um fenômeno ocupacional",
+      "ppp": "Banco Mundial — fator PPP de consumo privado (apenas para hipóteses de preço)"
+    },
+    "licenceNote": "A literatura revisada descreve o CBI como um instrumento de domínio público. Os artigos mantêm o copyright de suas editoras; citamos fatos e metodologia com atribuição."
+  },
+  "how": {
+    "title": "Como o StressCast funciona",
+    "lead": "Tudo o que você vê aqui pode ser reproduzido com uma calculadora.",
+    "calcTitle": "O que ele calcula",
+    "calcBody": "O StressCast calcula uma pontuação de esgotamento relacionado ao trabalho de 0 a 100 a partir dos sete itens Work-related do Copenhagen Burnout Inventory (CBI). Cada resposta é convertida em 0, 25, 50, 75 ou 100 pontos e os sete valores são promediados. O item sobre ter energia suficiente para família e amigos recebe pontuação invertida.",
+    "calcNote": "A pontuação descreve a sua experiência atual autorrelatada. Não é um diagnóstico e não afirma que você tenha uma doença. A Organização Mundial da Saúde classifica o burnout como um fenômeno ocupacional, e não como uma condição médica.",
+    "itemsTitle": "Os sete itens",
+    "itemsCaption": "Itens da escala CBI Work-related, com seu tipo de escala e sua direção.",
+    "colItem": "Item",
+    "colScale": "Escala",
+    "colDirection": "Direção",
+    "scaleDegree": "Grau",
+    "scaleFrequency": "Frequência",
+    "directionDirect": "Direta",
+    "directionReverse": "Pontuação invertida",
+    "scenariosTitle": "O que significam os cenários de 30 dias",
+    "scenariosBody": "Os cenários não são uma previsão clínica nem uma probabilidade. São uma simulação condicional what-if: «Sem mudança» mantém sua pontuação atual; «Melhora» mostra a aritmética se até dois itens elegíveis descessem uma categoria; «Piora» a mostra se subissem uma categoria. Mudar uma categoria em um item move a média cerca de 3,6 pontos (25/7).",
+    "scenariosNote": "A regra de dois itens é uma hipótese de sensibilidade do produto, não evidência de que essa mudança ocorrerá em 30 dias.",
+    "exampleTitle": "Um exemplo resolvido",
+    "exampleBody": "Respostas: em grau alto, um pouco, um pouco, sempre, frequentemente, às vezes e raramente (item de energia, pontuação invertida). Pontos de carga: 75, 50, 50, 100, 75, 50 e 75. Média = 475 / 7 = 67,9. Melhora = 67,9 − 2 × 3,57 = 60,7; piora = 67,9 + 2 × 3,57 = 75,0.",
+    "exampleCaption": "Exemplo resolvido (ilustrativo). Itens na ordem WB1 a WB7.",
+    "dataTitle": "De onde vêm os dados",
+    "dataBody": "O questionário e a pontuação vêm do Centro Nacional de Pesquisa do Ambiente de Trabalho da Dinamarca (NFA). O material PUMA informa, para o esgotamento relacionado ao trabalho, uma média de 33,0, desvio padrão de 17,7, N = 1.910 e alfa de Cronbach de 0,87; nessa população de profissões de serviços humanos, 19,8% obtiveram 50 pontos ou mais. Existem estudos de validação em espanhol e em português brasileiro, mas os valores dinamarqueses não são normas globais.",
+    "reliabilityTitle": "Qual é a confiabilidade?",
+    "reliabilityBody": "A aritmética é exata e determinística. O CBI mostra boa consistência interna nos estudos citados. O StressCast v1 não foi validado para prever a pontuação individual 30 dias depois, por isso os cenários são apresentados como trajetórias what-if e nunca como probabilidades.",
+    "limitsTitle": "Limites",
+    "limitsBody": "A pontuação depende do autorrelato e pode variar com o momento, o contexto e a forma como você interpreta as perguntas. A comparação PUMA vem de uma amostra dinamarquesa de profissões de serviços humanos e não é um percentil global. Não use o resultado para decisões de emprego sobre outra pessoa.",
+    "cta": "Começar meu check"
+  },
+  "faqPage": {
+    "title": "Perguntas frequentes",
+    "lead": "As respostas honestas ao que as pessoas perguntam antes de começar."
+  },
+  "legal": {
+    "disclaimer": "StressCast é uma ferramenta de reflexão sobre bem-estar no trabalho. Não diagnostica, trata nem substitui um profissional qualificado. Não deve ser usada para decisões de emprego sobre outra pessoa.",
+    "support": "Se o sofrimento for intenso, persistente ou afetar sua segurança ou funcionamento diário, procure apoio profissional apropriado no seu país.",
+    "draftNotice": "Rascunho pendente de revisão jurídica por mercado. Não o considere assessoria jurídica.",
+    "lastUpdated": "Última atualização: {date}",
+    "privacy": {
+      "title": "Política de privacidade",
+      "sections": [
+        {
+          "title": "Escopo e abordagem",
+          "body": [
+            "O StressCast mede o esgotamento relacionado ao trabalho com um autocheck breve. Suas respostas podem revelar informações sensíveis sobre o seu bem-estar, então as tratamos como dados operacionais de alta sensibilidade, embora o StressCast não seja um produto médico.",
+            "Aplicamos minimização de dados: antes de você pedir um relatório, não coletamos nenhum dado pessoal e suas respostas ficam na sessão do seu navegador."
+          ]
+        },
+        {
+          "title": "O que coletamos",
+          "body": [
+            "Antes da etapa do relatório: nada que identifique você. O cálculo é feito sem guardar suas respostas.",
+            "Quando você pede o relatório: seu email, idioma, país, respostas, resultado, registros de consentimento (com versões e carimbos de data e hora) e o status técnico de entrega.",
+            "Sempre: registros técnicos mínimos (identificadores de requisição, códigos de erro, uma chave de limite de uso derivada do seu endereço de rede). Não registramos respostas nem payloads."
+          ]
+        },
+        {
+          "title": "Para que usamos e com qual base",
+          "body": [
+            "Para gerar e entregar o seu relatório — com base no seu consentimento explícito. Mensagens de marketing exigem um consentimento separado, opcional e desmarcado por padrão. Um uso para pesquisa exigiria outro consentimento separado e não é realizado.",
+            "A medição de uso anônima opcional só é carregada se você permitir e nunca inclui respostas, pontuação, email ou conteúdo do relatório."
+          ]
+        },
+        {
+          "title": "Cópia ao operador durante a validação",
+          "body": [
+            "Enquanto o StressCast está na fase de validação, uma cópia do seu pedido de relatório (identificador, respostas, resultado e o PDF) é enviada ao operador do StressCast para revisar e concluir manualmente a entrega. Essa cópia é usada somente para isso, nunca para decisões de emprego, marketing ou analytics. Informamos isso antes de você enviar."
+          ]
+        },
+        {
+          "title": "Quem trata dados por nós",
+          "body": [
+            "Hospedagem e entrega: Vercel. Banco de dados: Supabase. Email: Resend. Proteção contra bots: Cloudflare Turnstile. Limite de uso: Upstash. Arquivos do modelo: Google Drive (nunca dados de usuários). Analytics opcional: PostHog (somente eventos permitidos, após seu consentimento). Monitoramento de erros: Sentry (sem dados pessoais). Pagamentos, somente se ativados: Stripe.",
+            "Os provedores atuam sob seus próprios termos e nossas instruções; podem ocorrer transferências para fora do seu país."
+          ]
+        },
+        {
+          "title": "Por quanto tempo guardamos",
+          "body": [
+            "Os payloads individuais (respostas e resultados) são mantidos por 30 dias durante a validação, salvo se houver outra obrigação legal ou necessidade operacional documentada. Registros mínimos de auditoria, que não contêm respostas, podem ser mantidos por mais tempo."
+          ]
+        },
+        {
+          "title": "Seus direitos",
+          "body": [
+            "Dependendo de onde você mora (por exemplo, sob o GDPR, a CCPA/CPRA, a LGPD do Brasil ou a Lei 29733 do Peru), você pode ter direito de acessar, corrigir, eliminar, restringir, portar ou se opor ao tratamento dos seus dados.",
+            "Use o formulário da página de direitos sobre os seus dados. Verificamos sua identidade por email antes de agir."
+          ]
+        },
+        {
+          "title": "Segurança",
+          "body": [
+            "Criptografia em trânsito, segredos apenas no servidor, segurança por linha no banco de dados, links privados assinados e com validade, limite de uso e proteção contra bots."
+          ]
+        },
+        {
+          "title": "Mudanças e contato",
+          "body": [
+            "Atualizaremos esta política quando as práticas mudarem e publicaremos a data acima. Use o formulário de direitos para qualquer solicitação."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Termos de uso",
+      "sections": [
+        {
+          "title": "Finalidade",
+          "body": [
+            "O StressCast é uma ferramenta de reflexão sobre bem-estar no trabalho para adultos que trabalham. Não é um produto de saúde e não oferece diagnóstico, tratamento nem aconselhamento profissional."
+          ]
+        },
+        {
+          "title": "Elegibilidade e uso pessoal",
+          "body": [
+            "Você deve ser maior de idade e usar o StressCast para si mesmo(a). Não faça o check em nome de outra pessoa."
+          ]
+        },
+        {
+          "title": "Não é para decisões de emprego",
+          "body": [
+            "Os resultados não devem ser usados para tomar ou apoiar decisões sobre contratação, desempenho, promoção, sanção ou demissão de qualquer pessoa. É proibido solicitar ou compartilhar o resultado de outra pessoa para esses fins."
+          ]
+        },
+        {
+          "title": "Uso aceitável",
+          "body": [
+            "Sem scraping automatizado, testes de carga, contorno da proteção contra bots nem tentativas de acessar relatórios de outros usuários."
+          ]
+        },
+        {
+          "title": "Sem garantia",
+          "body": [
+            "O serviço é oferecido como está. Os cenários são aritmética what-if, não previsões. Na medida permitida por lei, o operador não responde por decisões tomadas com base nos resultados."
+          ]
+        },
+        {
+          "title": "Propriedade intelectual",
+          "body": [
+            "A literatura descreve o CBI como um instrumento de domínio público. O código, o design e os textos do StressCast são protegidos; não os reproduza sem permissão."
+          ]
+        },
+        {
+          "title": "Mudanças e lei aplicável",
+          "body": [
+            "Podemos atualizar estes termos; continuar usando o serviço significa aceitá-los. O operador definirá a lei aplicável e a jurisdição antes do lançamento público."
+          ]
+        }
+      ]
+    },
+    "wellbeing": {
+      "title": "Aviso de bem-estar",
+      "body": [
+        "O StressCast é uma ferramenta de reflexão sobre bem-estar no trabalho. Não diagnostica, trata nem substitui um profissional qualificado. Não é um serviço de emergência.",
+        "A pontuação reflete a sua experiência autorrelatada em um momento. Um número alto ou baixo não diz se você tem ou não uma condição."
+      ],
+      "supportTitle": "Onde encontrar apoio",
+      "supportBody": "Se você se sente mal por um período prolongado, converse com um médico, um psicólogo ou o serviço de saúde da sua região. Se você pode estar em perigo ou pensa em se machucar, ligue agora para o número de emergência local ou para uma linha de crise do seu país.",
+      "linesTitle": "Linhas de crise e apoio emocional",
+      "linesNote": "A disponibilidade e os horários podem variar. Confirme o número da sua região.",
+      "lines": {
+        "US": "Estados Unidos: ligue ou envie mensagem para 988",
+        "GB": "Reino Unido: Samaritans, 116 123",
+        "CA": "Canadá: ligue ou envie mensagem para 988",
+        "AU": "Austrália: Lifeline, 13 11 14",
+        "BR": "Brasil: CVV, 188",
+        "MX": "México: Línea de la Vida, 800 911 2000",
+        "ES": "Espanha: 024"
+      }
+    },
+    "rights": {
+      "title": "Acesso, correção ou exclusão dos seus dados",
+      "lead": "Conte-nos o que você precisa. Enviaremos um link de verificação por email antes de agir, para que somente você possa alterar seus dados.",
+      "email": "Email usado no seu relatório",
+      "type": "O que você precisa?",
+      "typeAccess": "Acessar uma cópia dos meus dados",
+      "typeDeletion": "Excluir meus dados",
+      "typeRectification": "Corrigir meus dados",
+      "submit": "Enviar solicitação",
+      "success": "Solicitação recebida. Se o email corresponder a um pedido de relatório, enviaremos um link de verificação.",
+      "error": "Não conseguimos enviar sua solicitação. Tente novamente.",
+      "rateLimited": "Muitas tentativas. Aguarde um minuto e tente novamente.",
+      "invalid_email": "Digite um email válido."
+    }
+  },
+  "errors": {
+    "notFoundTitle": "Não encontramos essa página",
+    "notFoundBody": "O link pode estar incorreto ou a página pode ter mudado de lugar.",
+    "genericTitle": "Algo deu errado",
+    "genericBody": "Ocorreu um erro inesperado. Suas respostas estão seguras nesta sessão. Tente novamente.",
+    "toHome": "Voltar ao início"
+  },
+  "emails": {
+    "user": {
+      "subject": "Seu relatório StressCast está pronto",
+      "preheader": "Um link privado para o seu relatório. Não é diagnóstico nem previsão.",
+      "greeting": "Olá,",
+      "ready": "Seu relatório StressCast está pronto. Use o botão abaixo para abri-lo. O link é privado e expira em {days} dias.",
+      "preparing": "Recebemos seu pedido e estamos preparando seu relatório StressCast. Você pode abri-lo com o botão abaixo.",
+      "button": "Abrir meu relatório",
+      "pdfNote": "Você pode baixar o PDF na página do relatório.",
+      "notDiagnosis": "O StressCast é uma ferramenta de reflexão sobre bem-estar no trabalho. Não diagnostica, trata nem substitui um profissional qualificado, e os cenários são aritmética what-if, não previsões.",
+      "privacy": "Política de privacidade",
+      "rights": "Seus direitos sobre seus dados",
+      "why": "Você recebe este email porque pediu um relatório no StressCast. Se não foi você, ignore-o.",
+      "linkWarning": "Não encaminhe este email: o link dá acesso ao seu relatório."
+    }
+  }
+}
