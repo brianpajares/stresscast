@@ -501,7 +501,11 @@
     "reliabilityBody": "The arithmetic is exact and deterministic. The CBI shows good internal consistency in the cited studies. StressCast v1 has not been validated to predict an individual’s score 30 days later, which is why scenarios are presented as what-if paths and never as probabilities.",
     "limitsTitle": "Limits",
     "limitsBody": "The score depends on self-report and can vary with moment, context and how you read the questions. The PUMA comparison comes from a Danish sample of human-service professions and is not a global percentile. Do not use the result for employment decisions about another person.",
-    "cta": "Start my check"
+    "cta": "Start my check",
+    "colResponse": "Response",
+    "colBurden": "Burden points",
+    "modelCardTitle": "Model card (verified document)",
+    "modelCardNote": "This text is loaded from the versioned, checksum-verified model card that the app uses."
   },
   "faqPage": {
     "title": "Frequently asked questions",
@@ -656,7 +660,18 @@
       "success": "Request received. If the email matches a report request, we will send you a verification link.",
       "error": "We could not submit your request. Please try again.",
       "rateLimited": "Too many attempts. Please wait a minute and try again.",
-      "invalid_email": "Enter a valid email."
+      "invalid_email": "Enter a valid email.",
+      "confirmTitle": "Confirm your request",
+      "confirmBody": "To protect your data, confirm that you want us to proceed with this request.",
+      "confirmButton": "Confirm request",
+      "confirmDone": "Done. Your request was processed. If you asked for a copy of your data, it is on its way to your email.",
+      "confirmInvalid": "This confirmation link is invalid or has already been used.",
+      "confirmError": "We could not process your request. Please try again.",
+      "typeLabel": {
+        "access": "access",
+        "deletion": "deletion",
+        "rectification": "correction"
+      }
     }
   },
   "errors": {
@@ -681,5 +696,16 @@
       "why": "You are receiving this because you requested a report on StressCast. If this was not you, ignore this email.",
       "linkWarning": "Do not forward this email: the link gives access to your report."
     }
+  },
+  "privacyEmail": {
+    "verifySubject": "Confirm your StressCast data request",
+    "verifyBody": "We received a request for {type} of your StressCast data. If it was you, confirm it with the button below. If not, ignore this email: nothing will change.",
+    "verifyButton": "Confirm request",
+    "exportSubject": "Your StressCast data copy",
+    "exportBody": "Attached is a copy of the data we hold for this email address (JSON).",
+    "deletedSubject": "Your StressCast data was deleted",
+    "deletedBody": "We deleted or anonymized the data associated with this email, except records we are legally required to keep.",
+    "rectificationSubject": "We received your correction request",
+    "rectificationBody": "We received your correction request and will follow up by email. Answers are a point-in-time measurement and cannot be edited in place; you can take the check again at any time."
   }
 }

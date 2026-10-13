@@ -1,12 +1,21 @@
 {
   "name": "stresscast",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:engine": "vitest run tests/engine && tsx scripts/parity-sweep.ts",
+    "test:parity": "tsx scripts/parity-sweep.ts",
+    "test:e2e": "playwright test",
+    "model:base": "tsx scripts/build-model-base.ts",
+    "pdf:fonts": "tsx scripts/build-pdf-fonts.ts",
+    "drive:sync": "tsx scripts/drive-sync.ts",
+    "doctor": "tsx scripts/doctor.ts"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.6.1",

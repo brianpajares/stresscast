@@ -1,5 +1,5 @@
 import type { Locale } from "@/i18n/routing";
-import { LOCALES } from "@/i18n/routing";
+import { approvedLocales } from "@/lib/gate";
 
 /** Origen público (canonical, sitemap, OG). Prioriza NEXT_PUBLIC_APP_URL; en Vercel cae al dominio de producción. */
 export function siteUrl(): string {
@@ -22,7 +22,7 @@ export function alternatesFor(locale: Locale, path = ""): {
 } {
   const base = siteUrl();
   const languages: Record<string, string> = {};
-  for (const l of LOCALES) languages[l === "pt" ? "pt-BR" : l] = `${base}${localizedPath(l, path)}`;
+  for (const l of approvedLocales()) languages[l === "pt" ? "pt-BR" : l] = `${base}${localizedPath(l, path)}`;
   languages["x-default"] = `${base}${localizedPath("en", path)}`;
   return { canonical: `${base}${localizedPath(locale, path)}`, languages };
 }

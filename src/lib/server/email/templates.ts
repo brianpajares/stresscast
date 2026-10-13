@@ -163,3 +163,34 @@ export function renderOwnerEmail(args: OwnerEmailArgs): { subject: string; html:
   ].join("\n");
   return { subject, html, text };
 }
+
+export type PrivacyEmailKind = "verify" | "export" | "deleted" | "rectification";
+
+/** Emails del flujo de derechos del titular (US-09): verificación, copia de datos, confirmación de borrado. */
+export function renderPrivacyEmail(args: {
+  locale: Locale;
+  t: T;
+  kind: PrivacyEmailKind;
+  typeLabel?: string;
+  confirmUrl?: string;
+}): { subject: string; html: string; text: string } {
+  const { t, kind } = args;
+  const subject = t(`${kind === "verify" ? "verify" : kind}Subject`);
+  const bodyText =
+    kind === "verify" ? t("verifyBody", { type: args.typeLabel ?? "" }) : t(`${kind}Body`);
+  const button =
+    kind === "verify" && args.confirmUrl
+      ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;"><tr><td style="background:${BRAND};border-radius:12px;">
+      <a href="${esc(args.confirmUrl)}" style="display:inline-block;padding:14px 26px;font-weight:700;font-size:16px;color:#FFFFFF;text-decoration:none;">${esc(t("verifyButton"))}</a>
+    </td></tr></table><p style="margin:0;font-size:13px;color:#475569;word-break:break-all;">${esc(args.confirmUrl)}</p>`
+      : "";
+  const html = shell({
+    lang: args.locale === "pt" ? "pt-BR" : args.locale,
+    preheader: subject,
+    title: subject,
+    body: `<p style="margin:0 0 16px;">${esc(bodyText)}</p>${button}`,
+    footer: "<p style=\"margin:16px 0 0;\">StressCast</p>",
+  });
+  const text = [bodyText, args.confirmUrl ? `\n${t("verifyButton")}: ${args.confirmUrl}` : ""].join("\n");
+  return { subject, html, text };
+}

@@ -372,15 +372,42 @@
     "planDontTitle": "O que não concluir de uma única medição",
     "planDontBody": "Uma única pontuação é uma foto. Ela não mostra uma tendência, uma causa nem uma condição.",
     "methodTable": {
-      "instrument": { "k": "Instrumento", "v": "CBI Work-related, 7 itens" },
-      "scoring": { "k": "Pontuação", "v": "0 / 25 / 50 / 75 / 100 por item" },
-      "reverse": { "k": "Pontuação invertida", "v": "WB7 (energia para família e amigos)" },
-      "score": { "k": "Pontuação", "v": "Média dos 7 burden scores" },
-      "reference": { "k": "Referência alta", "v": "50 ou mais (PUMA, contextual)" },
-      "scenario": { "k": "Cenário", "v": "Até 2 itens × 1 categoria" },
-      "nature": { "k": "Natureza do cenário", "v": "Sensibilidade determinística" },
-      "predictive": { "k": "Modelo preditivo em 30 dias", "v": "Não" },
-      "model": { "k": "Versão do modelo", "v": "{version}" }
+      "instrument": {
+        "k": "Instrumento",
+        "v": "CBI Work-related, 7 itens"
+      },
+      "scoring": {
+        "k": "Pontuação",
+        "v": "0 / 25 / 50 / 75 / 100 por item"
+      },
+      "reverse": {
+        "k": "Pontuação invertida",
+        "v": "WB7 (energia para família e amigos)"
+      },
+      "score": {
+        "k": "Pontuação",
+        "v": "Média dos 7 burden scores"
+      },
+      "reference": {
+        "k": "Referência alta",
+        "v": "50 ou mais (PUMA, contextual)"
+      },
+      "scenario": {
+        "k": "Cenário",
+        "v": "Até 2 itens × 1 categoria"
+      },
+      "nature": {
+        "k": "Natureza do cenário",
+        "v": "Sensibilidade determinística"
+      },
+      "predictive": {
+        "k": "Modelo preditivo em 30 dias",
+        "v": "Não"
+      },
+      "model": {
+        "k": "Versão do modelo",
+        "v": "{version}"
+      }
     },
     "formulaTitle": "Fórmula",
     "formulaBody": "Pontuação S = (p1 + … + p7) / 7, onde cada p é 0, 25, 50, 75 ou 100 e p7 = 100 − a pontuação direta. Melhora = max(0, S − k·25/7); piora = min(100, S + k·25/7), com k até 2.",
@@ -474,7 +501,11 @@
     "reliabilityBody": "A aritmética é exata e determinística. O CBI mostra boa consistência interna nos estudos citados. O StressCast v1 não foi validado para prever a pontuação individual 30 dias depois, por isso os cenários são apresentados como trajetórias what-if e nunca como probabilidades.",
     "limitsTitle": "Limites",
     "limitsBody": "A pontuação depende do autorrelato e pode variar com o momento, o contexto e a forma como você interpreta as perguntas. A comparação PUMA vem de uma amostra dinamarquesa de profissões de serviços humanos e não é um percentil global. Não use o resultado para decisões de emprego sobre outra pessoa.",
-    "cta": "Começar meu check"
+    "cta": "Começar meu check",
+    "colResponse": "Resposta",
+    "colBurden": "Pontos de carga",
+    "modelCardTitle": "Model card (documento verificado)",
+    "modelCardNote": "Este texto é carregado da model card versionada, com checksum verificado, usada pelo app."
   },
   "faqPage": {
     "title": "Perguntas frequentes",
@@ -629,7 +660,18 @@
       "success": "Solicitação recebida. Se o email corresponder a um pedido de relatório, enviaremos um link de verificação.",
       "error": "Não conseguimos enviar sua solicitação. Tente novamente.",
       "rateLimited": "Muitas tentativas. Aguarde um minuto e tente novamente.",
-      "invalid_email": "Digite um email válido."
+      "invalid_email": "Digite um email válido.",
+      "confirmTitle": "Confirme sua solicitação",
+      "confirmBody": "Para proteger seus dados, confirme que deseja que prossigamos com esta solicitação.",
+      "confirmButton": "Confirmar solicitação",
+      "confirmDone": "Pronto. Sua solicitação foi processada. Se você pediu uma cópia dos seus dados, ela está a caminho do seu email.",
+      "confirmInvalid": "Este link de confirmação é inválido ou já foi usado.",
+      "confirmError": "Não conseguimos processar sua solicitação. Tente novamente.",
+      "typeLabel": {
+        "access": "acesso",
+        "deletion": "exclusão",
+        "rectification": "correção"
+      }
     }
   },
   "errors": {
@@ -654,5 +696,16 @@
       "why": "Você recebe este email porque pediu um relatório no StressCast. Se não foi você, ignore-o.",
       "linkWarning": "Não encaminhe este email: o link dá acesso ao seu relatório."
     }
+  },
+  "privacyEmail": {
+    "verifySubject": "Confirme sua solicitação de dados do StressCast",
+    "verifyBody": "Recebemos uma solicitação de {type} dos seus dados do StressCast. Se foi você, confirme com o botão abaixo. Se não, ignore este email: nada será alterado.",
+    "verifyButton": "Confirmar solicitação",
+    "exportSubject": "Sua cópia de dados do StressCast",
+    "exportBody": "Segue em anexo uma cópia dos dados que mantemos para este email (JSON).",
+    "deletedSubject": "Seus dados do StressCast foram excluídos",
+    "deletedBody": "Excluímos ou anonimizamos os dados associados a este email, exceto os registros que somos obrigados por lei a manter.",
+    "rectificationSubject": "Recebemos sua solicitação de correção",
+    "rectificationBody": "Recebemos sua solicitação de correção e responderemos por email. As respostas são uma medição em um momento e não são editadas; você pode refazer o check quando quiser."
   }
 }

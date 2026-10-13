@@ -11,12 +11,10 @@ import { cn } from "@/lib/utils";
 const LABEL: Record<Locale, string> = { es: "ES", en: "EN", pt: "PT" };
 const NAME: Record<Locale, string> = { es: "Español", en: "English", pt: "Português" };
 
-function Switcher({ withQuery }: { withQuery: boolean }) {
+function SwitcherView({ query }: { query?: Record<string, string> }) {
   const locale = useLocale() as Locale;
   const pathname = usePathname();
   const t = useTranslations("common");
-  const searchParams = useSearchParams();
-  const query = withQuery ? Object.fromEntries(searchParams.entries()) : undefined;
 
   return (
     <nav aria-label={t("language")}>
@@ -53,11 +51,16 @@ function Switcher({ withQuery }: { withQuery: boolean }) {
   );
 }
 
+function SwitcherWithQuery() {
+  const searchParams = useSearchParams();
+  return <SwitcherView query={Object.fromEntries(searchParams.entries())} />;
+}
+
 /** Selector de idioma persistente (cookie NEXT_LOCALE de next-intl). Conserva la query (p. ej. token del informe). */
 export function LanguageSwitcher() {
   return (
-    <Suspense fallback={<Switcher withQuery={false} />}>
-      <Switcher withQuery />
+    <Suspense fallback={<SwitcherView />}>
+      <SwitcherWithQuery />
     </Suspense>
   );
 }

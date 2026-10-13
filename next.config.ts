@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import { withSentryConfig } from "@sentry/nextjs/config";
+import pkg from "./package.json";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -33,7 +35,14 @@ function contentSecurityPolicy(): string {
   return directives.join("; ");
 }
 
+// FR-24: Stripe solo con MONETIZATION_MODE=stripe Y STRIPE_ENABLED=true. Flag público derivado en build.
+const paymentEnabled = process.env.MONETIZATION_MODE === "stripe" && process.env.STRIPE_ENABLED === "true";
+
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_APP_VERSION: pkg.version,
+    NEXT_PUBLIC_PAYMENT_ENABLED: String(paymentEnabled),
+  },
   poweredByHeader: false,
   reactStrictMode: true,
   turbopack: {
@@ -85,4 +94,12 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+export default withSentryConfig(withNextIntl(nextConfig), {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  silent: true,
+  telemetry: false,
+  // Sin token no se suben source maps (el build no falla ni depende de red externa).
+  sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
+});

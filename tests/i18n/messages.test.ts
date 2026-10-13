@@ -87,7 +87,7 @@ describe("AT-07 · claims prohibidos solo aparecen negados", () => {
 describe("ICU: todos los mensajes formatean sin errores", () => {
   const values = {
     current: 3, score: "67,9", version: "1.0.0", year: 2026, date: "7 oct 2026", driver: "X", k: 2, low: "60,7", high: "75,0",
-    one: "3,57", two: "7,14", page: 1, total: 7, points: "12,3", mean: "33,0", sd: "17,7", n: "1.910", share: "19,8%", alpha: "0,87", days: 30,
+    one: "3,57", two: "7,14", page: 1, total: 7, type: "x", points: "12,3", mean: "33,0", sd: "17,7", n: "1.910", share: "19,8%", alpha: "0,87", days: 30,
   };
   for (const loc of ["en", "es", "pt"] as const) {
     it(`${loc}: sin errores de sintaxis ICU`, () => {

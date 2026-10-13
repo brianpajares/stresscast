@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, HTML_LANG } from "@/i18n/routing";
 import { ConsentBanner } from "@/components/layout/consent-banner";
+import { isLocaleIndexable } from "@/lib/gate";
 import { alternatesFor, pickClientMessages, siteUrl } from "@/lib/site";
 import "../globals.css";
 
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
       locale: HTML_LANG[locale].replace("-", "_"),
     },
     twitter: { card: "summary_large_image", title: t("title"), description: t("description") },
-    robots: { index: true, follow: true },
+    robots: { index: isLocaleIndexable(locale), follow: isLocaleIndexable(locale) },
     formatDetection: { telephone: false, email: false, address: false },
   };
 }
