@@ -142,7 +142,7 @@ export function ReportViewComponent({ view, issuedAt, modelVersion, pdfHref, lab
           <Section id="r-method" title={view.method.title}>
             <div className="space-y-3">
               <MeasuredDisclosure sectionId="method_table" summary={view.method.title} defaultOpen>
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto" tabIndex={0} role="region" aria-label={view.method.title}>
                   <table className="w-full min-w-[20rem] text-left text-sm">
                     <caption className="sr-only">{view.method.title}</caption>
                     <tbody>

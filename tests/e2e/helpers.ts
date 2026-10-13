@@ -29,6 +29,8 @@ export async function declineAnalytics(page: Page) {
 /** Recorre el cuestionario usando SOLO teclado en los ítems (dígitos 1–5 + Enter). */
 export async function completeAssessment(page: Page, locale: "es" | "en" | "pt", country = "ES", answers: readonly string[] = T12) {
   await page.goto(`/${locale}/assessment`);
+  await page.evaluate(() => window.sessionStorage.clear()); // empezar siempre desde el paso de país
+  await page.reload();
   await declineAnalytics(page);
   await page.locator("#country-select").selectOption(country);
   await page.locator("form button[type=submit]").click();

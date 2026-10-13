@@ -46,10 +46,20 @@ test.describe("AT-23 · i18n y SEO", () => {
 test.describe("AT-20/21 · privacidad de la analítica", () => {
   test("ningún request de analítica contiene email, respuestas, score ni banda; sin terceros sin consentimiento", async ({ page }) => {
     const analytics: string[] = [];
+    // sendBeacon no expone su cuerpo a Playwright: lo interceptamos en la página.
+    await page.addInitScript(() => {
+      const w = window as unknown as { __beacons: Promise<string>[] };
+      w.__beacons = [];
+      const orig = navigator.sendBeacon.bind(navigator);
+      navigator.sendBeacon = (url, data) => {
+        if (String(url).includes("/api/events") && data instanceof Blob) w.__beacons.push(data.text());
+        return orig(url, data);
+      };
+    });
     const external: string[] = [];
     page.on("request", (r) => {
       const u = new URL(r.url());
-      if (u.pathname === "/api/events") analytics.push(r.postData() ?? "");
+      if (u.pathname === "/api/events") analytics.push(r.postDataBuffer()?.toString("utf8") ?? "");
       else if (!["localhost"].includes(u.hostname) && !u.protocol.startsWith("data")) external.push(r.url());
     });
     await completeAssessment(page, "en");
@@ -59,11 +69,13 @@ test.describe("AT-20/21 · privacidad de la analítica", () => {
     await page.getByRole("button", { name: "Send my report" }).click();
     await page.waitForURL(/report\/success/);
 
-    expect(analytics.length).toBeGreaterThan(8);
+    const beacons = await page.evaluate(async () => Promise.all((window as unknown as { __beacons: Promise<string>[] }).__beacons));
+    analytics.push(...beacons);
+    expect(analytics.filter(Boolean).length).toBeGreaterThan(8);
     const spec = JSON.parse((await import("node:fs")).readFileSync("spec/analytics_events.json", "utf8")) as { events: { name: string; properties: string[] }[]; forbidden_properties: string[] };
     const names = new Map(spec.events.map((e) => [e.name, new Set(e.properties)]));
     const common = new Set(["session_id", "language", "market", "app_version", "model_version", "viewport_bucket", "consent_analytics"]);
-    for (const raw of analytics) {
+    for (const raw of analytics.filter(Boolean)) {
       expect(raw).not.toMatch(/privacidad@example\.com|67[.,]8|high_reference|below_high_reference|very_high|"answer/);
       const ev = JSON.parse(raw) as { name: string; props: Record<string, unknown> };
       expect(names.has(ev.name), ev.name).toBe(true);
@@ -169,6 +181,6 @@ test.describe("AT-15/AT-16 · /admin", () => {
     await page.getByRole("button", { name: "Reenviar" }).first().click();
     await expect(page.getByRole("status")).toContainText("Reenvío registrado");
     await expect.poll(async () => (await (await request.get("/api/e2e/outbox")).json()).length).toBeGreaterThan(before);
-    await expect(page.getByText("resend_report")).toBeVisible();
+    await expect(page.getByText("resend_report").first()).toBeVisible();
   });
 });

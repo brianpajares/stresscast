@@ -52,7 +52,7 @@ export default async function HowItWorksPage({ params }: PageProps<"/[locale]/ho
       </ProseSection>
 
       <ProseSection id="items" title={t("how.itemsTitle")}>
-        <div className="overflow-x-auto rounded-lg border border-border bg-surface">
+        <div tabIndex={0} role="region" aria-label={t("how.itemsCaption")} className="overflow-x-auto rounded-lg border border-border bg-surface">
           <table className="w-full min-w-[34rem] text-left text-sm">
             <caption className="sr-only">{t("how.itemsCaption")}</caption>
             <thead className="bg-surface-alt text-text">
@@ -85,7 +85,7 @@ export default async function HowItWorksPage({ params }: PageProps<"/[locale]/ho
 
       <ProseSection id="example" title={t("how.exampleTitle")}>
         <p>{t("how.exampleBody")}</p>
-        <div className="overflow-x-auto rounded-lg border border-border bg-surface">
+        <div tabIndex={0} role="region" aria-label={t("how.exampleCaption")} className="overflow-x-auto rounded-lg border border-border bg-surface">
           <table className="w-full min-w-[30rem] text-left text-sm">
             <caption className="px-4 py-2 text-left text-xs text-muted">{t("how.exampleCaption")}</caption>
             <thead className="bg-surface-alt text-text">
