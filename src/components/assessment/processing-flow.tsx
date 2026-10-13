@@ -47,7 +47,6 @@ export function ProcessingFlow() {
   useEffect(() => {
     if (started.current) return; // StrictMode ejecuta los efectos dos veces en desarrollo
     started.current = true;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- el flujo arranca al montar; run() actualiza estado
     void run();
   }, [run]);
 

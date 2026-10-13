@@ -47,7 +47,7 @@ export function AssessmentFlow() {
   const draftStored = useSessionValue<AssessmentDraft>(KEYS.assessment);
   const draft = draftStored ?? EMPTY;
   const step = Math.min(Math.max(draft.step, 0), TOTAL - 1);
-  const navigated = useRef(false);
+  const [navigated, setNavigated] = useState(false);
   const [restored, setRestored] = useState(false);
   const checkedRestore = useRef(false);
 
@@ -59,7 +59,7 @@ export function AssessmentFlow() {
   }, [draftStored]);
 
   function go(next: AssessmentDraft) {
-    navigated.current = true;
+    setNavigated(true);
     setRestored(false);
     writeSession(KEYS.assessment, next);
   }
@@ -69,7 +69,7 @@ export function AssessmentFlow() {
       key={step}
       step={step}
       draft={draft}
-      focusHeading={navigated.current}
+      focusHeading={navigated}
       restored={restored}
       onChange={go}
     />

@@ -22,7 +22,6 @@ vi.mock("next-intl/server", async () => {
 });
 
 declare global {
-  // eslint-disable-next-line no-var
   var __afterQueue: Promise<unknown>[];
 }
 globalThis.__afterQueue = [];

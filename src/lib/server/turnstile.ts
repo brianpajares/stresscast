@@ -2,6 +2,7 @@ import "server-only";
 import { features, getEnv } from "./env";
 import { clientIp } from "./http";
 import { logWarn } from "./log";
+import { e2eOutboxEnabled } from "./email/outbox";
 
 export type TurnstileOutcome =
   | { ok: true; skipped: boolean }
@@ -16,6 +17,7 @@ const VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
  *  - Sin clave en producción CON envío real de email: se rechaza (evita usar Resend como relé de spam).
  */
 export async function verifyTurnstile(token: string, req: Request): Promise<TurnstileOutcome> {
+  if (e2eOutboxEnabled()) return { ok: true, skipped: true }; // solo E2E_MODE + ALLOW_MEMORY_STORE
   const secret = getEnv().TURNSTILE_SECRET_KEY;
   if (!secret) {
     const production = process.env.NODE_ENV === "production";

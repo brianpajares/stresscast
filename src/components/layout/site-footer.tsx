@@ -2,6 +2,7 @@ import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "./logo";
 import { AnalyticsPrefsButton } from "./consent-banner";
+import { ThemeToggle } from "./theme-toggle";
 import { MODEL_VERSION } from "@/engine/types";
 
 export async function SiteFooter({ variant = "full" }: { variant?: "full" | "minimal" }) {
@@ -48,6 +49,10 @@ export async function SiteFooter({ variant = "full" }: { variant?: "full" | "min
           <p className="max-w-3xl">{t("legal.disclaimer")}</p>
           {locale !== "en" ? <p className="max-w-3xl">{t("footer.translationNotice")}</p> : null}
           <p>{t("footer.builtOn", { version: MODEL_VERSION })}</p>
+          <div className="flex items-center gap-3 sm:hidden">
+            <span>{t("common.theme")}</span>
+            <ThemeToggle />
+          </div>
           <p>{t("footer.rights", { year: new Date().getUTCFullYear() })}</p>
         </div>
       </div>

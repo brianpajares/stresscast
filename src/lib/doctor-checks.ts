@@ -113,6 +113,12 @@ export function runChecks(env: Env): Check[] {
     env.STORE_DRIVER === "memory" && prod ? "fail" : "ok",
     "STORE_DRIVER=memory es solo para desarrollo/E2E: los datos no persisten.",
   );
+  add(
+    "e2e-mode",
+    "Modo E2E (outbox de pruebas)",
+    env.E2E_MODE === "true" && (prod || env.VERCEL_ENV === "production") ? "fail" : "ok",
+    "E2E_MODE=true captura emails en memoria: jamás debe estar activo en producción.",
+  );
   return checks;
 }
 

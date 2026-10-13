@@ -195,7 +195,7 @@ export default async function LandingPage({ params }: PageProps<"/[locale]">) {
       {/* PRINCIPIOS */}
       <Section labelledBy="principles-title">
         <SectionTitle id="principles-title">{t("landing.principlesTitle")}</SectionTitle>
-        <dl className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        <ul className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
           {(
             [
               ["math", Calculator],
@@ -204,17 +204,17 @@ export default async function LandingPage({ params }: PageProps<"/[locale]">) {
               ["privacy", ShieldCheck],
             ] as const
           ).map(([key, Icon]) => (
-            <div key={key} className="flex gap-4">
+            <li key={key} className="flex gap-4">
               <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
                 <Icon className="size-6" aria-hidden="true" />
               </span>
               <div>
-                <dt className="text-lg font-bold">{t(`landing.principles.${key}.title`)}</dt>
-                <dd className="mt-1 text-muted">{t(`landing.principles.${key}.body`)}</dd>
+                <h3 className="text-lg font-bold">{t(`landing.principles.${key}.title`)}</h3>
+                <p className="mt-1 text-muted">{t(`landing.principles.${key}.body`)}</p>
               </div>
-            </div>
+            </li>
           ))}
-        </dl>
+        </ul>
       </Section>
 
       {/* EVIDENCIA */}

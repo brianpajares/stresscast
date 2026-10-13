@@ -2,6 +2,7 @@ import "server-only";
 import { Resend } from "resend";
 import { features, getEnv } from "../env";
 import { logWarn } from "../log";
+import { e2eOutboxEnabled, outbox } from "./outbox";
 
 export interface EmailMessage {
   to: string;
@@ -37,6 +38,16 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
  */
 export async function sendEmail(msg: EmailMessage): Promise<SendOutcome> {
   if (transportOverride) return transportOverride(msg);
+  if (e2eOutboxEnabled()) {
+    outbox().push({
+      to: msg.to,
+      subject: msg.subject,
+      text: msg.text,
+      html: msg.html,
+      attachments: (msg.attachments ?? []).map((a) => ({ filename: a.filename, bytes: a.content.length, magic: a.content.subarray(0, 4).toString("latin1") })),
+    });
+    return { status: "sent", id: `e2e_${outbox().length}` };
+  }
   if (!features().resend) return { status: "skipped", code: "email_unconfigured" };
 
   const env = getEnv();

@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Badge, Card, Notice } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,11 @@ import { monetizationMode } from "@/lib/server/env";
 import { logoutAction, resendAction } from "./actions";
 
 export const dynamic = "force-dynamic";
+
+/** Fuera del componente: la regla de pureza de React prohíbe Date.now() en render. */
+function daysAgoIso(days: number): string {
+  return new Date(Date.now() - days * 86_400_000).toISOString().slice(0, 10);
+}
 
 const pct = (n: number | null) => (n === null ? "—" : `${(n * 100).toFixed(1)}%`);
 const STATUS_TONE: Record<string, "primary" | "warning" | "neutral"> = {
@@ -51,7 +57,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const sp = await searchParams;
   const days = sp.days === "14" ? 14 : 30;
   const store = getStore();
-  const since = new Date(Date.now() - days * 86_400_000).toISOString().slice(0, 10);
+  const since = daysAgoIso(days);
   const [funnelRows, statusCountsRaw, leads, actions, bundle] = await Promise.all([
     store?.funnelSince(since) ?? [],
     store?.statusCounts() ?? {},
@@ -98,8 +104,8 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         <div className="flex items-center justify-between">
           <h2 id="funnel" className="text-xl font-extrabold">Embudo (últimos {days} días)</h2>
           <nav aria-label="Ventana temporal" className="flex gap-2 text-sm">
-            <a className="rounded-md border border-border px-3 py-1.5 font-semibold" href="/admin?days=14">14 d</a>
-            <a className="rounded-md border border-border px-3 py-1.5 font-semibold" href="/admin?days=30">30 d</a>
+            <Link className="rounded-md border border-border px-3 py-1.5 font-semibold" href="/admin?days=14">14 d</Link>
+            <Link className="rounded-md border border-border px-3 py-1.5 font-semibold" href="/admin?days=30">30 d</Link>
           </nav>
         </div>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -162,7 +168,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         <h2 id="states" className="text-xl font-extrabold">Estado de entregas</h2>
         <ul className="mt-3 flex flex-wrap gap-2">
           {Object.entries(statusCounts).map(([k, v]) => (
-            <li key={k}><a href={`/admin?status=${k}`} className="inline-flex"><Badge tone={STATUS_TONE[k] ?? "neutral"} className="px-3 py-1.5 text-sm">{k}: {v}</Badge></a></li>
+            <li key={k}><Link href={`/admin?status=${k}`} className="inline-flex"><Badge tone={STATUS_TONE[k] ?? "neutral"} className="px-3 py-1.5 text-sm">{k}: {v}</Badge></Link></li>
           ))}
           {!Object.keys(statusCounts).length ? <li className="text-sm text-muted">Sin solicitudes todavía.</li> : null}
         </ul>

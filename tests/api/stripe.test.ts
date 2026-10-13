@@ -6,7 +6,10 @@ import { __setEmailTransport, type EmailMessage } from "@/lib/server/email/clien
 import { sharedMemoryStore } from "@/lib/server/store/memory";
 import { __resetMemoryLimiter } from "@/lib/server/ratelimit";
 
-const createSession = vi.fn(async (_params: unknown, _opts: unknown) => ({ id: "cs_test_1", url: "https://checkout.stripe.com/c/pay/cs_test_1" }));
+const createSession = vi.fn(async (...args: unknown[]) => {
+  void args;
+  return { id: "cs_test_1", url: "https://checkout.stripe.com/c/pay/cs_test_1" };
+});
 const realStripe = new Stripe("sk_test_dummy");
 vi.mock("@/lib/server/stripe", async (orig) => {
   const actual = await orig<typeof import("@/lib/server/stripe")>();

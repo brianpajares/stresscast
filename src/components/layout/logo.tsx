@@ -27,11 +27,11 @@ export function Wordmark({ className }: { className?: string }) {
   );
 }
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({ className, wordmarkClassName }: { className?: string; wordmarkClassName?: string }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <LogoMark />
-      <Wordmark />
+      <Wordmark className={wordmarkClassName} />
     </span>
   );
 }

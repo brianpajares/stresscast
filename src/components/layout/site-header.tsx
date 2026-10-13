@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { X } from "lucide-react";
 import { Logo } from "./logo";
 import { LanguageSwitcher } from "./language-switcher";
 import { ThemeToggle } from "./theme-toggle";
@@ -15,7 +16,7 @@ export async function SiteHeader({ variant = "full" }: { variant?: "full" | "min
     <header className="no-print border-b border-border/70 bg-bg/85 backdrop-blur supports-[backdrop-filter]:bg-bg/70">
       <div className="mx-auto flex min-h-16 w-full max-w-(--container-content) items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="-ml-1 rounded-md p-1" aria-label={`${t("meta.appName")} — ${t("common.home")}`}>
-          <Logo />
+          <Logo wordmarkClassName="hidden min-[400px]:inline" />
         </Link>
 
         {variant === "full" ? (
@@ -43,10 +44,17 @@ export async function SiteHeader({ variant = "full" }: { variant?: "full" | "min
 
         <div className="flex items-center gap-2">
           <LanguageSwitcher />
-          <ThemeToggle />
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
           {variant === "minimal" ? (
-            <Link href="/" className={buttonVariants({ variant: "ghost", size: "sm" })}>
-              {t("common.exit")}
+            <Link
+              href="/"
+              aria-label={t("common.exit")}
+              className={`${buttonVariants({ variant: "ghost", size: "sm" })} min-w-11 px-2 sm:px-4`}
+            >
+              <X className="size-5 sm:hidden" aria-hidden="true" />
+              <span className="hidden sm:inline">{t("common.exit")}</span>
             </Link>
           ) : null}
         </div>
