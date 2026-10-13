@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# StressCast
 
-## Getting Started
+Chequeo de **burnout relacionado con el trabajo** basado en la subescala *Work-related* del Copenhagen Burnout Inventory (CBI): score actual 0–100, referencia contextual PUMA y **escenarios what-if** (no predicciones, no probabilidades, no diagnóstico). Next.js 16 · TypeScript estricto · ES/EN/PT · listo para Vercel.
 
-First, run the development server:
+> Fuente de verdad: `docs/PRD.md` → `spec/` → `ux/` → `model/engine_reference.py` → `docs/ACCEPTANCE_TESTS.md`.
+
+## Qué incluye
+
+| Área | Estado |
+|---|---|
+| Motor determinista TS (paridad exacta con Python, 20/20 golden + 78.125 combinaciones) | ✅ |
+| Landing, evaluación 8 pasos (teclado, foco, sessionStorage), preview gratuita sin cifras de escenarios | ✅ |
+| Solicitud de informe (email + consentimientos versionados + Turnstile), informe web, **PDF de 7 páginas** (`@react-pdf/renderer`) | ✅ |
+| Emails (Resend) con Idempotency-Key; copia al operador en `validation` con *disclosure* previo | ✅ |
+| Supabase (RLS + funciones transaccionales/idempotentes), `/admin` (embudo, leads enmascarados, reenvío auditado) | ✅ |
+| Google Drive: SHA-256 contra manifiesto bundled, cache 24 h, última versión válida, `npm run drive:sync` | ✅ |
+| Stripe Checkout + webhook firmado e idempotente, **solo** con `MONETIZATION_MODE=stripe` y `STRIPE_ENABLED=true` | ✅ |
+| Derechos del titular (acceso/rectificación/eliminación con verificación por email), retención (cron diario) | ✅ |
+| Analítica con allowlist estricta, Sentry con *scrubbing*, CSP/HSTS, rate limit, Turnstile | ✅ |
+| Tests: 133 unit/integración/API + 42 E2E (axe, 360 px, teclado, privacidad, admin) | ✅ |
+
+## Comandos
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local      # todo es opcional: sin claves funciona en modo demostración
+npm run dev                     # http://localhost:3000
+npm run lint && npm run typecheck
+npm run test                    # unit + integración + API + 20 golden vectors
+npm run test:parity             # Python (oracle) vs TypeScript: 78.125 combinaciones (requiere python3)
+npm run test:e2e                # Playwright (build + start en :3100). Local en Windows: PW_CHANNEL=msedge
+npm run build
+npm run doctor                  # revisa configuración vs. gates de lanzamiento
+npm run drive:sync              # sube drive/ a GOOGLE_DRIVE_FOLDER_ID (verifica checksums)
+npm run model:base              # regenera el snapshot embebido desde drive/base/base_stresscast.xlsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> **Windows corporativo:** si SWC falla con `ERR_SWC_NATIVE_CACHE`, define `SWC_NATIVE_BINDING_CACHE` en una carpeta con ACL limpia (p. ej. `C:\Users\<tú>\.swc-cache`). No afecta a Vercel/CI.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Modos de operación (degradación elegante)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Demostración (sin claves):** cálculo, preview, informe web y PDF funcionan con **enlaces stateless cifrados (AES-GCM)**: nada se guarda en servidor. Requiere `REPORT_TOKEN_SECRET` (≥ 32 caracteres) estable.
+2. **Validación completa:** añade Supabase + Resend + Turnstile (+ Upstash, PostHog, Sentry opcionales). Lead, consentimientos, entrega y `/admin` quedan activos.
+3. **Pago (fase 2):** `MONETIZATION_MODE=stripe` + `STRIPE_ENABLED=true` + claves de Stripe. Hasta cumplir el gate de cobro (≥300 previews, ≥100 solicitudes, ≥35 % preview→solicitud en ≤30 días) **no se activa**.
 
-## Learn More
+## Despliegue (Vercel)
 
-To learn more about Next.js, take a look at the following resources:
+1. Importa el repo en Vercel (framework Next.js, detectado). `vercel.json` ya declara el cron `/api/cron/retention` (03:17 UTC).
+2. Variables (ver `.env.example`): mínimo `NEXT_PUBLIC_APP_URL`, `REPORT_TOKEN_SECRET`. Para producción real: Supabase (`SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`), `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `OWNER_EMAIL`, Turnstile (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`), `CRON_SECRET`.
+3. Base de datos: aplica `supabase/migrations/*.sql` en orden (primero el esquema canónico, luego funciones) y crea tu usuario en Auth + una fila en `admin_users`.
+4. `npm run drive:sync` (opcional) para publicar los artefactos en Drive.
+5. `npm run doctor` con las variables de producción; el panel `/admin` muestra la misma lista.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Gates de lanzamiento (no son bloqueos de build)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`docs/LAUNCH_CHECKLIST.md`. En código: ES/PT **no se indexan** hasta definir `LINGUISTIC_GATE_APPROVED=es,pt` tras cotejar el wording con versiones validadas; las páginas legales son **borrador** hasta la revisión por mercado; verifica marca/dominio *StressCast*; verifica los teléfonos de apoyo de `legal.wellbeing.lines`.
 
-## Deploy on Vercel
+## Estructura
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+spec/ ux/ model/ docs/ drive/   paquete canónico (sin modificar)
+src/engine/                     motor puro + lector XLSX + snapshot embebido
+src/lib/server/                 env, store (Supabase/memoria), Drive, tokens, email, PDF, Stripe, rate limit
+src/app/[locale]/…              sitio (es|en|pt)      src/app/admin/…   panel      src/app/api/…   rutas
+supabase/migrations/            esquema + funciones   tests/            unit, API, UI y e2e
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Decisiones técnicas: `DECISIONS.md`. Este producto no es un dispositivo médico ni ofrece diagnóstico; no debe usarse para decisiones laborales sobre terceros.
