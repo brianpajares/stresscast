@@ -14,8 +14,8 @@
     "test:e2e": "playwright test",
     "model:base": "tsx scripts/build-model-base.ts",
     "pdf:fonts": "tsx scripts/build-pdf-fonts.ts",
-    "drive:sync": "tsx scripts/drive-sync.ts",
-    "doctor": "tsx scripts/doctor.ts"
+    "drive:sync": "tsx --env-file-if-exists=.env.local scripts/drive-sync.ts",
+    "doctor": "tsx --env-file-if-exists=.env.local scripts/doctor.ts"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.6.1",
@@ -62,6 +62,7 @@
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
     "typescript": "^5",
+    "unpdf": "^1.8.1",
     "vitest": "^5.0.3"
   }
 }

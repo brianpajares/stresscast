@@ -1,0 +1,1 @@
+export const useTestEnvLocal = true;

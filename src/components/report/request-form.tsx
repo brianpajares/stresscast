@@ -8,7 +8,8 @@ import { Link, useRouter } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ApiClientError, createReportRequest } from "@/lib/client/api";
+import { ApiClientError, createCheckout, createReportRequest } from "@/lib/client/api";
+import { formatCurrency } from "@/lib/format";
 import {
   KEYS,
   isCompleteAnswers,
@@ -36,7 +37,8 @@ function idempotencyKey(): string {
  * Gate de informe (S12): un campo email, consentimiento de entrega OBLIGATORIO y marketing OPCIONAL y separado
  * (desmarcado por defecto). La copia al operador (modo validation) se revela junto al CTA, antes de enviar.
  */
-export function RequestForm() {
+export function RequestForm({ mode = "request" }: { mode?: "request" | "checkout" }) {
+  const checkoutMode = mode === "checkout";
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const router = useRouter();
@@ -81,6 +83,9 @@ export function RequestForm() {
     );
   }
 
+  // Referencias ya estrechadas: las declaraciones de función no conservan el narrowing de `const`.
+  const cur = { result, answers };
+
   function validateEmail(value: string): boolean {
     const ok = EMAIL_RE.test(value.trim());
     setEmailError(ok ? null : t("request.invalid_email"));
@@ -112,7 +117,7 @@ export function RequestForm() {
           email: email.trim(),
           explicit_report_consent: true,
           marketing_opt_in: marketing,
-          calculation: { inputs: answers, result },
+          calculation: { inputs: cur.answers, result: cur.result },
           turnstile_token: token ?? "not-configured",
           locale,
         },
@@ -128,6 +133,16 @@ export function RequestForm() {
       };
       writeSession(KEYS.request, outcome);
       track("report_request_success", { delivery_channel: outcome.mode });
+      if (checkoutMode) {
+        if (!created.calculation_id) throw new ApiClientError(502, "checkout_unavailable", "checkout", null);
+        track("payment_attempt", { currency: cur.result.localized_price.currency });
+        const { checkout_url } = await createCheckout(
+          { calculation_id: created.calculation_id, email: email.trim(), country: cur.answers.country },
+          `${idempotencyKey()}-checkout`,
+        );
+        window.location.assign(checkout_url);
+        return;
+      }
       router.push("/report/success");
     } catch (err) {
       const code = err instanceof ApiClientError ? err.code : "unknown_error";
@@ -137,7 +152,9 @@ export function RequestForm() {
           ? t("request.rateLimited")
           : code === "turnstile_failed"
             ? t("request.turnstileRequired")
-            : t("request.deliveryError"),
+            : checkoutMode
+              ? t("checkout.error")
+              : t("request.deliveryError"),
       );
       turnstileRef.current?.reset();
       setToken(null);
@@ -154,9 +171,18 @@ export function RequestForm() {
 
       <Card className="mt-4 animate-fade-up">
         <h1 tabIndex={-1} className="text-balance text-2xl font-extrabold tracking-tight sm:text-3xl">
-          {t("request.title")}
+          {checkoutMode ? t("checkout.title") : t("request.title")}
         </h1>
-        <p className="mt-2 text-muted">{t("request.body")}</p>
+        <p className="mt-2 text-muted">{checkoutMode ? t("checkout.body") : t("request.body")}</p>
+        {checkoutMode ? (
+          <p className="mt-4 flex items-baseline justify-between rounded-md bg-surface-alt px-4 py-3">
+            <span className="font-semibold">{t("checkout.price")}</span>
+            <span className="text-2xl font-extrabold tabular">
+              {formatCurrency(result.localized_price.recommended_price, result.localized_price.currency, locale)}
+            </span>
+          </p>
+        ) : null}
+        {checkoutMode ? <p className="mt-2 text-xs text-muted">{t("checkout.taxNote")}</p> : null}
 
         <form onSubmit={onSubmit} noValidate className="mt-6 space-y-5">
           <div>
@@ -259,7 +285,7 @@ export function RequestForm() {
 
           <Button type="submit" size="lg" block loading={submitting}>
             <Send className="size-5" aria-hidden="true" />
-            {submitting ? t("request.submitting") : t("request.cta")}
+            {submitting ? t("request.submitting") : checkoutMode ? t("checkout.pay") : t("request.cta")}
           </Button>
         </form>
       </Card>

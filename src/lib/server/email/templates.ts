@@ -119,7 +119,7 @@ export function renderOwnerEmail(args: OwnerEmailArgs): { subject: string; html:
     ["Idioma / país", `${args.locale} / ${args.country}`],
     ["Versiones (app / modelo / datos / manifiesto)", `${args.versions.app} / ${args.versions.model} / ${args.versions.data} / ${args.versions.manifest}`],
     ["Entrega al usuario", args.userDelivery],
-    ["PDF adjunto", args.hasPdf ? "sí" : "no (fallo de generación)"],
+    ["PDF adjunto", args.hasPdf ? "sí" : args.minimal ? "no (modo stripe: solo metadatos)" : "no (fallo de generación)"],
   ];
   const inputRows = Object.entries(args.inputs).map(([k, v]) => [k, String(v)] as [string, string]);
   const resultRows: [string, string][] = [
@@ -154,12 +154,9 @@ export function renderOwnerEmail(args: OwnerEmailArgs): { subject: string; html:
     "DATOS SENSIBLES DE BIENESTAR — uso exclusivo para cumplimiento manual. No reenviar.",
     "",
     ...rows.map(([k, v]) => `${k}: ${v}`),
-    "",
-    "INPUTS",
-    ...inputRows.map(([k, v]) => `${k}: ${v}`),
-    "",
-    "RESULTADOS",
-    ...resultRows.map(([k, v]) => `${k}: ${v}`),
+    ...(args.minimal
+      ? []
+      : ["", "INPUTS", ...inputRows.map(([k, v]) => `${k}: ${v}`), "", "RESULTADOS", ...resultRows.map(([k, v]) => `${k}: ${v}`)]),
   ].join("\n");
   return { subject, html, text };
 }

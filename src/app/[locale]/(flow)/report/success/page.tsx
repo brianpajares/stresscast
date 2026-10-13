@@ -12,9 +12,10 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/report/s
   return { title: t("successTitle"), robots: { index: false, follow: false } };
 }
 
-export default async function SuccessPage({ params }: PageProps<"/[locale]/report/success">) {
+export default async function SuccessPage({ params, searchParams }: PageProps<"/[locale]/report/success">) {
   const { locale } = await params;
+  const sp = await searchParams;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  return <SuccessView />;
+  return <SuccessView paid={sp.paid === "1"} />;
 }

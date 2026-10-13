@@ -10,7 +10,7 @@ import { KEYS, clearFlow, useSessionValue, type RequestOutcome } from "@/lib/cli
 import { track } from "@/lib/analytics/client";
 
 /** Éxito (S13): confirma la entrega y ofrece abrir el informe privado. No muestra datos sensibles. */
-export function SuccessView() {
+export function SuccessView({ paid = false }: { paid?: boolean }) {
   const t = useTranslations("success");
   const router = useRouter();
   const outcome = useSessionValue<RequestOutcome>(KEYS.request);
@@ -36,7 +36,7 @@ export function SuccessView() {
     );
   }
 
-  const body = outcome.mode === "demo" ? t("bodyDemo") : outcome.mode === "pending" ? t("bodyPending") : t("bodyEmail");
+  const body = paid ? t("bodyEmail") : outcome.mode === "demo" ? t("bodyDemo") : outcome.mode === "pending" ? t("bodyPending") : t("bodyEmail");
 
   return (
     <div className="mx-auto w-full max-w-(--container-form) px-4 py-10 sm:py-16">
